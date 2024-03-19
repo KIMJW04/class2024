@@ -1,5 +1,5 @@
 # 오늘의 수업
-[메인페이지] (https://kimjw04.github.io/class2024/)   
+[메인페이지](https://kimjw04.github.io/class2024/)   
 
 [자바스크립트](https://kimjw04.github.io/class2024/javascript/index.html)   
 
