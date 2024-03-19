@@ -60,12 +60,22 @@
             }
 
             nav {
+                overflow: auto;
+                /* Add scrollbars for overflow */
+
                 ul {
                     display: flex;
+                    flex-wrap: wrap;
+                    /* Allow wrapping of list items */
+                    justify-content: center;
+                    /* Center items horizontally */
+
 
                     li {
+                        margin: 10px;
+
                         a {
-                            display: inline;
+                            display: inline-block;
                             font-size: 16px;
                             font-family: "nanumSquareNeo";
                             border: 1px dashed #15c524;
@@ -73,6 +83,7 @@
                             margin: 2px;
                             color: #15c524;
                             background-color: #fff;
+                            text-decoration: none;
 
 
                             &:hover {
@@ -89,6 +100,7 @@
         body {
             background-image: linear-gradient(to bottom, transparent, transparent 16.6667%, #fff 16.6667%), linear-gradient(to right, #ccc, #ccc 16.6667%, #fff 16.6667%);
             background-size: 6px 6px;
+
         }
 
         body .wrap {
