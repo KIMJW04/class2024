@@ -743,6 +743,20 @@
         console.log(obj2.d) //jquery
         console.log(obj3)   //100200javascriptjquery
 }</code></pre>
+                <div class="result">
+                    <details>
+                        <summary>결과확인하기</summary>
+                        <div>
+                            { a: 100, b: 200, c: "javascript" }<br>
+                            { a: 100, b: 200, c: "javascript", d: "jquery" }<br>
+                            100<br>
+                            200<br>
+                            javascript<br>
+                            jquery<br>
+                            { a: 100, b: 200, c: "javascript", d: "jquery" }
+                        </div>
+                    </details>
+                </div>
             </div>
         </div>
         <!-- //sample22 -->
@@ -991,18 +1005,19 @@
 
         // 22. 객체 : 데이터 저장(여러개) : 표현방법10 : 객체펼침연산자
         {
-            const obj1 = { a: 100, b: 200, c: "javascript" }
-            const obj2 = { ...obj1, d: "jquery" }
-            const obj3 = { ...obj1, ...obj2 }
+            const obj1 = { a: 100, b: 200, c: "javascript" };
+            const obj2 = { ...obj1, d: "jquery" };
+            const obj3 = { ...obj1, ...obj2 };
 
-            console.log(obj1)   //100,200,javascript
-            console.log(obj2)   //100200javascript,jquery
-            console.log(obj2.a) //100
-            console.log(obj2.b) //200
-            console.log(obj2.c) //javascript
-            console.log(obj2.d) //jquery
-            console.log(obj3)   //100200javascriptjquery
+            console.log(obj1);   //{ a: 100, b: 200, c: "javascript" }
+            console.log(obj2);   //{ a: 100, b: 200, c: "javascript", d: "jquery" }
+            console.log(obj2.a); //100
+            console.log(obj2.b); //200
+            console.log(obj2.c); //javascript
+            console.log(obj2.d); //jquery
+            console.log(obj3);   //{ a: 100, b: 200, c: "javascript", d: "jquery" }
         }
+
 
     </script>
 
