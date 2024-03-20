@@ -11,9 +11,9 @@ ES7 : 자바스크립트 및 리액트 문법 정리
 
 
 # VScode 단축키
-설정 : ctrl + ,
-사이드 바 : ctrl + b
-줄 복사 : alt + shift + 화살표
+설정 : ctrl + ,    
+사이드 바 : ctrl + b    
+줄 복사 : alt + shift + 화살표     
 다중 선택 : alt + shift + click   
 다중 키워드 선택 : ctrl + D   
 
