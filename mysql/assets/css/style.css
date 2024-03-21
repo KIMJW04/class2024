@@ -220,8 +220,7 @@ li {
 .main__sample .sample p.strong {
     font-style: 20px;
     color: var(--black200);
-    margin: 15px;
-
+    margin-bottom: 10px;
 }
 
 .main__sample .sample .info {

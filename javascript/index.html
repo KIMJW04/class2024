@@ -36,75 +36,74 @@
             border: 8px solid #079713;
             border-radius: 20px;
             position: relative;
+        }
 
-            &::before {
-                content: '';
-                border: 8px solid #10a028;
-                width: calc(100% - 16px);
-                height: calc(100% - 16px);
-                position: absolute;
-                left: 0;
-                top: 0;
-                border-radius: 11px;
-                z-index: -1;
+        main::before {
+            content: "";
+            border: 8px solid #10a028;
+            width: calc(100% - 16px);
+            height: calc(100% - 16px);
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 11px;
+            z-index: -1;
+        }
+
+        main h1 {
+            font-size: 5vw;
+            margin: 3vw;
+            margin-top: 3vw;
+        }
+
+        @media (max-width: 800px) {
+            main h1 {
+                font-style: 30px;
             }
+        }
 
-            h1 {
-                font-size: 5vw;
-                margin: 3vw;
-                margin-top: 3vw;
+        main h1 a {
+            color: #15c524;
+        }
 
-                @media (max-width: 800px) {
-                    font-style: 30px;
-                }
+        main nav {
+            overflow: auto;
+            /* Add scrollbars for overflow */
+        }
 
-                a {
-                    color: #15c524;
-                }
-            }
+        main nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allow wrapping of list items */
+            justify-content: center;
+            /* Center items horizontally */
+        }
 
-            nav {
-                overflow: auto;
-                /* Add scrollbars for overflow */
+        main nav ul li {
+            margin: 10px;
+        }
 
-                ul {
-                    display: flex;
-                    flex-wrap: wrap;
-                    /* Allow wrapping of list items */
-                    justify-content: center;
-                    /* Center items horizontally */
+        main nav ul li a {
+            display: inline-block;
+            font-size: 16px;
+            font-family: "nanumSquareNeo";
+            border: 1px dashed #15c524;
+            padding: 10px 20px;
+            margin: 2px;
+            color: #15c524;
+            background-color: #fff;
+            text-decoration: none;
+        }
 
-
-                    li {
-                        margin: 10px;
-
-                        a {
-                            display: inline-block;
-                            font-size: 16px;
-                            font-family: "nanumSquareNeo";
-                            border: 1px dashed #15c524;
-                            padding: 10px 20px;
-                            margin: 2px;
-                            color: #15c524;
-                            background-color: #fff;
-                            text-decoration: none;
-
-
-                            &:hover {
-                                border: 1px dashed #10801a;
-                                background-color: #10801a;
-                                color: #fff;
-                            }
-                        }
-                    }
-                }
-            }
+        main nav ul li a:hover {
+            border: 1px dashed #10801a;
+            background-color: #10801a;
+            color: #fff;
         }
 
         body {
             background-image: linear-gradient(to bottom, transparent, transparent 16.6667%, #fff 16.6667%), linear-gradient(to right, #ccc, #ccc 16.6667%, #fff 16.6667%);
             background-size: 6px 6px;
-
         }
 
         body .wrap {
