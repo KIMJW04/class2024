@@ -146,6 +146,10 @@ body {
             font-size: 13px;
             display: block;
         }
+
+        a {
+            text-decoration: none;
+        }
     }
 }
 
@@ -174,34 +178,34 @@ body {
             border-radius: 10px;
             overflow-y: scroll;
 
-            &::-webkit-scrollbar{
+            &::-webkit-scrollbar {
                 width: 10px;
                 background-color: #22316731;
                 border-radius: 20px;
             }
-            
-            &::-webkit-scrollbar-thumb{
+
+            &::-webkit-scrollbar-thumb {
 
                 background-color: #79727283;
                 border-radius: 20px;
             }
-            
+
             .intro {
                 p {
                     line-height: 1.4;
                 }
-        
+
                 h3 {
                     font-style: 25px;
                     margin-bottom: 15px;
                     font-weight: 300;
                 }
-        
+
                 span {
                     display: block;
                     margin-bottom: 10px;
                 }
-        
+
                 .maill {
                     display: block;
                     font-size: 12px;
@@ -210,7 +214,7 @@ body {
                     margin-bottom: 30px;
                     margin-top: 30px;
                     position: relative;
-        
+
                     &::after {
                         content: '';
                         width: 80px;
@@ -220,28 +224,29 @@ body {
                         top: -14px;
                         left: 0;
                     }
-                        
+
                 }
+
                 .style1 {
                     font-size: 20px;
                     margin-bottom: 20px;
                     font-weight: 300;
                 }
-                
+
                 .style2 {
                     font-size: 16px;
                     opacity: 0.8;
-                }        
-               
+                }
+
             }
-            
-            .skill{
+
+            .skill {
                 margin-top: 30px;
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
 
-                h3{
+                h3 {
                     width: 100%;
                     border-bottom: 1px solid #fff;
                     font-weight: 100;
@@ -251,23 +256,26 @@ body {
                     margin-bottom: 20px;
                     margin-top: 20px;
                 }
-                dl{
+
+                dl {
                     width: 48%;
-                    dt{
+
+                    dt {
                         text-transform: uppercase;
                         text-decoration: underline;
                         text-underline-position: under;
                         margin-bottom: 10px;
                     }
-                    dd{
+
+                    dd {
                         margin-bottom: 10px;
                         line-height: 1.4;
                     }
                 }
             }
-            
-            .picture{
-                h3{
+
+            .picture {
+                h3 {
                     width: 100%;
                     border-bottom: 1px solid #fff;
                     font-weight: 100;
@@ -277,49 +285,56 @@ body {
                     margin-bottom: 20px;
                     margin-top: 20px;
                 }
-                ul{
+
+                ul {
                     display: flex;
                     flex-wrap: wrap;
-                    li{
+
+                    li {
                         width: 25%;
                         list-style: none;
-                        img{
+
+                        img {
                             width: 100%;
                             vertical-align: top;
                         }
                     }
                 }
             }
-         
+
         }
-        .layer__footer{}
+
+        .layer__footer {}
 
     }
 }
+
 /* layer__wrap */
-.layer__wrap{}
+.layer__wrap {}
+
 .layer__inner {
 
-    .layer{
-
-    }
+    .layer {}
 }
-@media (max-width: 1200px){
-    .layer__inner{
-        .layer{
+
+@media (max-width: 1200px) {
+    .layer__inner {
+        .layer {
             width: 90vw;
         }
     }
 }
-@media (max-width: 960px){
-    .layer__inner{
-        .layer{
+
+@media (max-width: 960px) {
+    .layer__inner {
+        .layer {
             width: 95vw;
             height: 95vh;
-            .layer__conts{
-                .picture{
-                    ul{
-                        li{
+
+            .layer__conts {
+                .picture {
+                    ul {
+                        li {
                             width: 33.3333%;
                         }
                     }
@@ -328,20 +343,22 @@ body {
         }
     }
 }
-@media (max-width: 800px){
-    .layer__inner{
-        .layer{
-            .layer__conts{
-                .skill{
+
+@media (max-width: 800px) {
+    .layer__inner {
+        .layer {
+            .layer__conts {
+                .skill {
                     flex-direction: column;
-                    
-                    dl{
+
+                    dl {
                         width: 100%;
                     }
                 }
-                .picture{
-                    ul{
-                        li{
+
+                .picture {
+                    ul {
+                        li {
                             width: 50%;
                         }
                     }
@@ -349,16 +366,18 @@ body {
             }
         }
     }
-    
+
 }
-@media (max-width: 600px){
-    .layer__inner{
-        .layer{
-            .layer__conts{
+
+@media (max-width: 600px) {
+    .layer__inner {
+        .layer {
+            .layer__conts {
                 background-color: #223167a8;
-                .picture{
-                    ul{
-                        li{
+
+                .picture {
+                    ul {
+                        li {
                             width: 100%;
                         }
                     }
@@ -366,5 +385,5 @@ body {
             }
         }
     }
-    
+
 }
