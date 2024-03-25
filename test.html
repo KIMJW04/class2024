@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 01 함수 선언적
+        {
+            function func() {
+                console.log("01");
+            }
+            func();
+        }
+        // 02 함수 익명
+        {
+            const func = function () {
+                console.log("02");
+            }
+            func();
+        }
+        // 03 함수 미개변수
+        {
+            function func(str) {
+                console.log(str);
+            }
+            func("03.1");
+            const func1 = function (str) {
+                console.log(str);
+            }
+            func1("03.2");
+        }
+        // 04 함수 리턴값
+        {
+            function func() {
+                return '04.1';
+            }
+            console.log(func());
+            const func1 = function () {
+                return '04.2';
+            }
+            console.log(func1());
+        }
+        // 05 함수 미개변수 + 리턴값
+        {
+            function func(str) {
+                return (str);
+            }
+            console.log(func("05.1"));
+
+            const func1 = function (str) {
+                return (str);
+            }
+            console.log(func1("05.2"));
+        }
+        // 06 화살표 선언적
+        {
+            function func() {
+                console.log("06.1");
+            }
+            func();
+            func1 = () => {
+                console.log("06.2");
+            }
+            func1();
+        }
+        // 07 화살표 익명
+        {
+            const func = function () {
+                console.log("07.1");
+            }
+            func();
+            const func1 = () => {
+                console.log("07.2");
+            }
+            func1();
+        }
+        // 08 화살표 미개변수
+        {
+            func1 = (str) => {
+                console.log(str);
+            }
+            func1("08.1");
+            const func2 = (str) => {
+                console.log(str);
+            }
+            func2("08.3");
+        }
+        // 09 화살표 리턴값
+        {
+            func1 = () => {
+                return '09.2';
+            }
+            console.log(func1());
+            const func2 = () => {
+                return '09.3';
+            }
+            console.log(func2());
+        }
+        // 10 화살표 미개변수 + 리턴값
+        {
+
+            const func1 = (str) => {
+                return (str);
+            }
+            console.log(func1("10.1"));
+
+            const func = str => {
+                return (str);
+            }
+            console.log(func("10.2"));
+
+            const func2 = str => str
+
+            console.log(func2("10.3"));
+
+            func3 = str => str;
+            console.log(func3("10.4"));
+        }
+    </script>
+</body>
+
+</html>

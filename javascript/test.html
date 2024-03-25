@@ -26,15 +26,15 @@
         // 03 함수 : 매개변수 함수
         {
             function func1(str) {
-                console.log("3");
+                console.log(str);
             }
-            func1();
+            func1("3");
 
 
-            const func = function (str) {
-                console.log("3");
+            const func1 = function (str) {
+                console.log(str);
             }
-            func();
+            func1("3");
         }
 
         // 04 함수 : 리턴값 함수
@@ -48,7 +48,6 @@
                 return "4";
             }
             console.log(func1());
-
         }
         // 05 함수 : 매개변수 + 리턴값
         {
