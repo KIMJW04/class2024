@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 01 함수 : 선언적 함수
+        {
+            function func() {
+                console.log("1");
+            }
+            func();
+        }
+        // 02 함수 : 익명 함수
+        {
+            const func = function () {
+                console.log("2");
+            }
+            func();
+        }
+        // 03 함수 : 매개변수 함수
+        {
+            function func1(str) {
+                console.log("3");
+            }
+            func1();
+
+
+            const func = function (str) {
+                console.log("3");
+            }
+            func();
+        }
+
+        // 04 함수 : 리턴값 함수
+        {
+            function func() {
+                return "4";
+            }
+            console.log(func());
+
+            const func1 = function () {
+                return "4";
+            }
+            console.log(func1());
+
+        }
+        // 05 함수 : 매개변수 + 리턴값
+        {
+            function func(str) {
+                return str;
+            }
+            console.log(func("5"));
+
+            const func1 = function (str) {
+                return str;
+            }
+            console.log(func1("5"));
+        }
+
+
+
+        // 06 함수 :
+        // 07 함수 :
+        // 08 함수 :
+        // 09 함수 :
+        // 10 함수 : 
+    </script>
+</body>
+
+</html>
