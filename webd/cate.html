@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://webfontworld.github.io/knps/KNPSBandali.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/kyobobook/KyoboHandwriting2020pdy.css" rel="stylesheet">
+    <title>웹디자인기능사</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    #wrap {
+        display: flex;
+    }
+
+    #side {
+        width: 256px;
+        height: 100vh;
+        padding: 20px;
+    }
+
+    #side h2 {
+        font-family: 'KNPSBandali';
+        font-size: 40px;
+        color: #3c52c1;
+        /* margin-bottom: 20px;
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 10px; */
+        margin: 20px 10px 5px 10px;
+    }
+
+    #side nav ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #side nav ul li {
+        list-style: none;
+    }
+
+    #side nav ul li a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border: 1px solid #666;
+        text-align: center;
+        text-decoration: none;
+        color: #666;
+        font-family: 'KyoboHandwriting2020pdy';
+        margin: 1px;
+        font-size: 14px;
+    }
+
+    #side nav ul li a:hover {
+        background-color: #000;
+        color: #fff;
+    }
+
+    #side nav ul li.active a {
+        background-color: #7888dac0;
+        border-color: #7888dac0;
+        color: #fff;
+    }
+
+    #content {
+        width: calc(100% - 256px);
+        height: 100vh;
+        background-color: #cfcfcf;
+    }
+
+    #content iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+</style>
+
+<body>
+    <div id="wrap">
+        <aside id="side">
+            <h2>web desing</h2>
+            <nav>
+                <ul>
+                    <li class="active"><a href="layoutA-1.html">A-1</a></li>
+                    <li><a href="layoutA-2.html">A-2</a></li>
+                    <li><a href="layoutA-3.html">A-3</a></li>
+                    <li><a href="layoutA-4.html">A-4</a></li>
+
+                    <li><a href="layoutB-1.html">B-1</a></li>
+                    <li><a href="layoutB-2.html">B-2</a></li>
+                    <li><a href="layoutB-3.html">B-3</a></li>
+                    <li><a href="layoutB-4.html">B-4</a></li>
+
+                    <li><a href="layoutC-1.html">C-1</a></li>
+                    <li><a href="layoutC-2.html">C-2</a></li>
+                    <li><a href="layoutC-3.html">C-3</a></li>
+                    <li><a href="layoutC-4.html">C-4</a></li>
+
+                    <li><a href="layoutD-1.html">D-1</a></li>
+                    <li><a href="layoutD-2.html">D-2</a></li>
+                    <li><a href="layoutD-3.html">D-3</a></li>
+                    <li><a href="layoutD-4.html">D-4</a></li>
+
+                    <li><a href="layoutE-1.html">E-1</a></li>
+                    <li><a href="layoutE-2.html">E-2</a></li>
+                    <li><a href="layoutE-3.html">E-3</a></li>
+                    <li><a href="layoutE-4.html">E-4</a></li>
+
+                    <li><a href="layoutF-1.html">F-1</a></li>
+                    <li><a href="layoutF-2.html">F-2</a></li>
+                    <li><a href="layoutF-3.html">F-3</a></li>
+                    <li><a href="layoutF-4.html">F-4</a></li>
+                </ul>
+                <ul>
+                    <li><a href="menuM-1.html">M-1</a></li>
+                    <li><a href="menuM-2.html">M-2</a></li>
+                    <li><a href="menuM-3.html">M-3</a></li>
+                    <li><a href="menuM-4.html">M-4</a></li>
+                    <li><a href="menuM-5.html">M-5</a></li>
+                    <li><a href="menuM-6.html">M-6</a></li>
+                </ul>
+                <ul>
+                    <li><a href="sliderS-1.html">s-1</a></li>
+                    <li><a href="sliderS-2.html">s-2</a></li>
+                    <li><a href="sliderS-3.html">s-3</a></li>
+                    <li><a href="sliderS-4.html">s-4</a></li>
+                    <li><a href="sliderS-5.html">s-5</a></li>
+                    <li><a href="sliderS-6.html">s-6</a></li>
+                </ul>
+                <ul>
+                    <li><a href="tab-1.html">T-1</a></li>
+                    <li><a href="popup-2.html">P-2</a></li>
+                </ul>
+                <ul>
+                    <li><a href="site1.html">SITE1</a></li>
+                    <li><a href="site2.html">SITE2</a></li>
+                    <li><a href="site3.html">SITE3</a></li>
+                    <li><a href="site4.html">SITE4</a></li>
+                    <li><a href="site5.html">SITE5</a></li>
+                    <li><a href="site6.html">SITE6</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main id="content">
+            <iframe src="layoutA-1.html" frameborder="0"></iframe>
+        </main>
+    </div>
+    <script>
+        document.querySelector("nav ul li")
+    </script>
+</body>
+
+</html>
