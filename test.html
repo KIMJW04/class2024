@@ -5,95 +5,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+
+        }
+
+        #header {
+            width: 100%;
+            height: 100px;
+            background-color: #f9cdcd;
+        }
+
+        #header .header {
+            width: 1200px;
+            height: 100px;
+            display: flex;
+        }
+
+        #header .header .logo {
+            width: 20%;
+            height: 100px;
+            background-color: #e64d4d;
+        }
+
+        #header .header .menu {
+            width: 80%;
+            height: 100px;
+            background-color: #d64646;
+        }
+
+        #slider {
+            width: 100%;
+            height: 300px;
+            background-color: #e1b9b9;
+        }
+
+        #slider .slider {
+            width: 1200px;
+            display: flex;
+        }
+
+        #slider .slider .slider1 {
+            width: 50%;
+            height: 300px;
+            background-color: #c64141;
+        }
+
+        #slider .slider .slider2 {
+            width: 50%;
+            flex-wrap: wrap;
+            height: 300px;
+        }
+
+        #slider .slider .slider2 .slider2-1 {
+            width: 100%;
+            height: 50%;
+            background-color: #b03b3b;
+        }
+
+        #slider .slider .slider2 .slider2-2 {
+            width: 100%;
+            height: 50%;
+            background-color: #9f3535;
+
+        }
+
+        #content {
+            width: 100%;
+            height: 200px;
+            background-color: #c3a5a5;
+        }
+
+        #content .content {
+            width: 1200px;
+            display: flex;
+        }
+
+        #content .content .content1 {
+            width: 33.3333%;
+            height: 200px;
+            background-color: #8a2e2e;
+        }
+
+        #content .content .content2 {
+            width: 33.3333%;
+            height: 200px;
+            background-color: #782727;
+        }
+
+        #content .content .content3 {
+            width: 33.3333%;
+            height: 200px;
+            background-color: #672222;
+        }
+
+        #footer {
+            width: 100%;
+            height: 100px;
+            background-color: #a48a8a;
+        }
+
+        #footer .footer {
+            width: 1200px;
+            display: flex;
+        }
+
+        #footer .footer .footer1 {
+            width: 20%;
+            height: 100px;
+            background-color: #5b1e1e;
+
+        }
+
+        #footer .footer .footer2 {
+            width: 60%;
+            height: 100px;
+            background-color: #4b1919;
+
+        }
+
+        #footer .footer .footer3 {
+            width: 20%;
+            height: 100px;
+            background-color: #471212;
+
+        }
+    </style>
 </head>
 
 <body>
-    <script>
-        // 01. 선언적 함수(화살표)
-        {
-            test = () => {
-                console.log("01");
-            }
-            test();
-        }
-        // 02. 익명 함수(화살표)
-        {
-            const test = () => {
-                console.log("02");
-            }
-            test();
-        }
-        // 03. 매개변수 함수(화살표)
-        {
-            test = (str) => {
-                console.log(str);
-            }
-            test("03");
-        }
-        // 04. 리턴값 함수(화살표)
-        {
-            test = () => {
-                return "04";
-            }
-            console.log(test());
-        }
-        // 05. 매개변수 + 리턴값 함수(화살표)
-        {
-            test = (str) => {
-                return str;
-            }
-            console.log(test("05"));
-        }
-        // 06
-        {
-            for (let i = 1; i < 21; i++) {
-                console.log(i);
-            }
-        }
-        // 07
-        {
-            const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            for (let i = 0; i < 9; i++) {
-                console.log(num[i]);
-            }
-        }
-        // 08
-        {
-            const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            num.forEach(function (el) {
-                console.log(el);
-            })
-        }
-        // 09
-        {
-            const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            for (let el in num) {
-                console.log(num[el]);
-            }
-        }
-        // 10
-        {
-            const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            for (let el of num) {
-                console.log(el);
-            }
-        }
-        // 11
-        {
-            const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            num.map(function (el) {
-                console.log(el);
-            })
-        }
-        // 12
-        {
-            const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            num.filter(function (el) {
-                console.log(el);
-            })
-        }
-
-    </script>
+    <div id="wrap">
+        <div id="header">
+            <div class="header">
+                <div class="logo"></div>
+                <div class="menu"></div>
+            </div>
+        </div>
+        <div id="slider">
+            <div class="slider">
+                <div class="slider1"></div>
+                <div class="slider2">
+                    <div class="slider2-1"></div>
+                    <div class="slider2-2"></div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="content">
+                <div class="content1"></div>
+                <div class="content2"></div>
+                <div class="content3"></div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="footer">
+                <div class="footer1"></div>
+                <div class="footer2"></div>
+                <div class="footer3"></div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

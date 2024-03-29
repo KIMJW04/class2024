@@ -45,6 +45,7 @@
     PRIMARY KEY(memberID)
 ) charset=utf8;</code></pre>
             </div>
+
             <div id="sample02" class="sample">
                 <h3>테이블 구조 보기</h3>
                 <div class="info">
@@ -62,6 +63,7 @@
  | regTime  | int(30)          | NO   |     | NULL    |                |
  +----------+------------------+------+-----+---------+----------------+</code></pre>
             </div>
+
             <div id="sample03" class="sample">
                 <h3>테이블 데이터 입력</h3>
                 <div class="info">
@@ -83,6 +85,7 @@ INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("강경�
 INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("안지은", "1234", "33", "840816", "1023958375");
 INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("박진아", "1232", "33", "990304", "1023958375");</code></pre>
             </div>
+
             <div id="sample04" class="sample">
                 <h3>테이블 삭제</h3>
                 <div class="info">
@@ -91,6 +94,7 @@ INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("박진�
                 <pre><code class="language-js">mysql> drop table members;
 Query OK, 0 rows affected (0.00 sec)</code></pre>
             </div>
+
             <div id="sample05" class="sample">
                 <h3>테이블 초기화</h3>
                 <div class="info">
@@ -98,6 +102,76 @@ Query OK, 0 rows affected (0.00 sec)</code></pre>
                 </div>
                 <pre><code class="language-js">mysql> truncate table members;
 Query OK, 0 rows affected (0.01 sec)</code></pre>
+            </div>
+
+            <div id="sample06" class="sample">
+                <h3>테이블 합치기(JOIN)</h3>
+                <div class="info">
+                    SELECT [필드명] FROM [테이블.앨리어스] JOIN [테이블.앨리어스] ON [기준이 되는 조건문]
+                </div>
+                <pre><code class="language-js">
+                    mysql> SELECT m.youName, m.youAge, r.youText, r.regTime FROM members m JOIN reviews r ON (m.memberID = r.memberID);
++-----------+--------+-----------------------------------------------+---------+
+| youName   | youAge | youText                                       | regTime |
++-----------+--------+-----------------------------------------------+---------+
+| 황상연    |     33 | 이 책 정말 재미있어요!                               |  240310 |
+| 남윤서    |     19 | 저도 이 책을 추천합니다.                              |  240411 |
+| 김진우    |     21 | 내용이 실망스러웠어요.                                |  240514 |
+| 최선화    |     26 | 마음에 드는 내용이 많아요.                            |  240216 |
+| 서대원    |     26 | 이 책을 읽고 많은 것을 배웠어요.                       |  240217 |
+| 김현민    |     32 | 추천하지 않습니다.                                  |  240226 |
+| 황인지    |     20 | 이 책은 정말 지루해요.                               |  240122 |
+| 박정민    |     29 | 또 읽고 싶은 책이에요.                               |  240125 |
+| 강서연    |     27 | 이 책은 가볍게 읽기 좋아요.                           |  240328 |
+| 이재혁    |     24 | 댓글 달기 귀찮았어요.                                |  240330 |
++-----------+--------+-----------------------------------------------+---------+
+10 rows in set (0.02 sec)</code></pre>
+                <pre><code class="language-js">
+create table members(
+    memberID int(10) unsigned auto_increment,
+    youName varchar(10) NOT NULL,
+    youPass varchar(20) NOT NULL,
+    youAge int(5) NOT NULL,
+    youBirth int(5) NOT NULL,
+    regTime int(30) NOT NULL,
+    PRIMARY KEY(memberID)
+) charset=utf8;
+
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("황상연", "1234", "33", "990304", "1023958375");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("남윤서", "1234", "19", "060121", "1023958375");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("김진우", "1234", "21", "040416", "1231231233");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("최선화", "1234", "26", "990123", "1104781152");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("서대원", "1234", "26", "011019", "1111100000");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("김현민", "1234", "32", "930604", "1023958375");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("황인지", "1234", "20", "990315", "1474187756");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("박정민", "1234", "29", "961017", "1023958375");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("강서연", "1234", "27", "980420", "0123456744");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("이재혁", "1215", "24", "010712", "1023958375");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("박소현", "1234", "29", "960917", "1231223123");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("김혜지", "1234", "28", "951002", "0123456789");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("강경민", "1234", "28", "970611", "1023952467");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("안지은", "1234", "33", "840816", "1023958375");
+INSERT INTO members(youName, youPass, youAge, youBirth, regTime) VALUES("박진아", "1232", "33", "990304", "1023958375");
+
+create table reviews(
+    reviewID int(10) unsigned auto_increment,
+    memberID int(10) unsigned,
+    youText tinytext NOT NULL,
+    regTime int(30) NOT NULL,
+    PRIMARY KEY(reviewID)
+) charset=utf8;
+
+INSERT INTO reviews(memberID, youText, regTime) VALUES("01", "이 책 정말 재미있어요!", "240310");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("02", "저도 이 책을 추천합니다.", "240411");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("03", "내용이 실망스러웠어요.", "240514");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("04", "마음에 드는 내용이 많아요.", "240216");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("05", "이 책을 읽고 많은 것을 배웠어요.", "240217");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("06", "추천하지 않습니다.", "240226");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("07", "이 책은 정말 지루해요.", "240122");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("08", "또 읽고 싶은 책이에요.", "240125");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("09", "이 책은 가볍게 읽기 좋아요.", "240328");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("10", "댓글 달기 귀찮았어요.", "240330");
+</code></pre>
             </div>
         </div>
     </main>
@@ -112,3 +186,8 @@ Query OK, 0 rows affected (0.01 sec)</code></pre>
 </body>
 
 </html>
+<!-- INSERT INTO reviews(memberID, youText, regTime) VALUES("11", "이 책은 흥미로워요!", "240209");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("12", "완전 좋은 책입니다!", "240401");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("13", "재밌는 책이에요.", "240411");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("14", "배송이 빨라 좋았어요.", "240513");
+INSERT INTO reviews(memberID, youText, regTime) VALUES("15", "이 책을 읽고 인생이 바뀌었어요!", "240512"); -->
