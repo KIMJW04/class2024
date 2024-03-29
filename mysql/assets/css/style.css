@@ -255,6 +255,10 @@ li {
     font-style: normal;
 }
 
+.main__sample .sample a {
+    text-decoration: none;
+}
+
 .main__sample .sample .info {
     padding: 20px;
     background-color: #f4f8fa;

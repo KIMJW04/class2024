@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 03</title>
+    <link rel="stylesheet" href="assets/css/quiz.css">
+</head>
+
+<body>
+    <header id="header">
+        <h1>
+            <a href="index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quiz01.html">01</a></li>
+                <li><a href="quiz02.html">02</a></li>
+                <li class="active"><a href="quiz03.html">03</a></li>
+                <li><a href="quiz04.html">04</a></li>
+                <li><a href="quiz05.html">05</a></li>
+                <li><a href="quiz06.html">06</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap">
+            <div class="quiz">
+                <div class="quiz__header"></div>
+                <div class="quiz__main">
+                    <div class="question"></div>
+                    <div class="choices">
+                        <label for="choice1">
+                            <input type="radio" id="choice1" name="choice" value="1">
+                            <span></span>
+                        </label>
+                        <label for="choice2">
+                            <input type="radio" id="choice2" name="choice" value="2">
+                            <span></span>
+                        </label>
+                        <label for="choice3">
+                            <input type="radio" id="choice3" name="choice" value="3">
+                            <span></span>
+                        </label>
+                        <label for="choice4">
+                            <input type="radio" id="choice4" name="choice" value="4">
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="answer "></div>
+                    <div class="desc "></div>
+                </div>
+                <div class="quiz__footer">
+                    <button class="confirm">정답 확인하기</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:kjw040416@gmail.com">kjw040416@gmail.com</a>
+    </footer>
+    <!-- //footer -->
+    <script>
+        // 선택자
+        const quizWrap = document.querySelector(".quiz__wrap");
+        const quizHeader = quizWrap.querySelector(".quiz__header");
+        const quizType = quizWrap.querySelector(".quiz__header .type");
+        const quizQuestion = quizWrap.querySelector(".quiz__main .question")
+        const quizChoices = quizWrap.querySelectorAll(".quiz__main .choices span");
+        const quizAnswer = quizWrap.querySelector(".quiz__main .answer");
+        const quizDesc = quizWrap.querySelector(".quiz__main .desc");
+        const quizConfirm = quizWrap.querySelector(".quiz__main .confirm");
+
+        // 문제 정보
+        const quizInfo = {
+            date: "2021년 1회",
+            type: "정보처리기능사",
+            num: "01",
+            question: "2진수의 1011의 1의 보수는?",
+            choices: ["0100", "0111", "1011", "1100"],
+            answer: "0100",
+            desc: "1의 보수는 1은 0으로, 0은 1으로 바꾸어 주면 답이 됩니다."
+        }
+        // 문제 출력
+        quizHeader.innerHTML = quizInfo.date + "" + quizInfo.type;
+        quizQuestion.innerHTML = quizInfo.num + ". " + quizInfo.question;
+
+        for (let i = 0; i < quizInfo.choices.length; i++) {
+            quizChoices[i].textContent = quizInfo.choices[i];
+        }
+    </script>
+</body>
+
+</html>
