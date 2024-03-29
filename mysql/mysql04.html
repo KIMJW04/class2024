@@ -109,8 +109,7 @@ Query OK, 0 rows affected (0.01 sec)</code></pre>
                 <div class="info">
                     SELECT [필드명] FROM [테이블.앨리어스] JOIN [테이블.앨리어스] ON [기준이 되는 조건문]
                 </div>
-                <pre><code class="language-js">
-                    mysql> SELECT m.youName, m.youAge, r.youText, r.regTime FROM members m JOIN reviews r ON (m.memberID = r.memberID);
+                <pre><code class="language-js">mysql> SELECT m.youName, m.youAge, r.youText, r.regTime FROM members m JOIN reviews r ON (m.memberID = r.memberID);
 +-----------+--------+-----------------------------------------------+---------+
 | youName   | youAge | youText                                       | regTime |
 +-----------+--------+-----------------------------------------------+---------+
@@ -126,8 +125,7 @@ Query OK, 0 rows affected (0.01 sec)</code></pre>
 | 이재혁    |     24 | 댓글 달기 귀찮았어요.                                |  240330 |
 +-----------+--------+-----------------------------------------------+---------+
 10 rows in set (0.02 sec)</code></pre>
-                <pre><code class="language-js">
-create table members(
+                <pre><code class="language-js">create table members(
     memberID int(10) unsigned auto_increment,
     youName varchar(10) NOT NULL,
     youPass varchar(20) NOT NULL,
