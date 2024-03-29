@@ -3,7 +3,9 @@
 
 [자바스크립트](https://kimjw04.github.io/class2024/javascript/index.html)   
 
-[MySQL](https://kimjw04.github.io/class2024/mysql/index.html)   
+[MySQL](https://kimjw04.github.io/class2024/mysql/index.html)  
+
+[MySQL](https://kimjw04.github.io/class2024/webd/index.html)  
 
 
 ## 퀴즈 게임
