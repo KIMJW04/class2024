@@ -5,7 +5,7 @@
 
 [MySQL](https://kimjw04.github.io/class2024/mysql/index.html)  
 
-[webd](https://kimjw04.github.io/class2024/webd/index.html)  
+[Web Disgine](https://kimjw04.github.io/class2024/webd/index.html)  
 
 
 ## 퀴즈 게임
