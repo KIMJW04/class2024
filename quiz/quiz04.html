@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 04</title>
+    <link rel="stylesheet" href="assets/css/quiz.css">
+</head>
+
+<body>
+    <header id="header">
+        <h1>
+            <a href="index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quiz01.html">01</a></li>
+                <li><a href="quiz02.html">02</a></li>
+                <li><a href="quiz03.html">03</a></li>
+                <li class="active"><a href="quiz04.html">04</a></li>
+                <li><a href="quiz05.html">05</a></li>
+                <li><a href="quiz06.html">06</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap"></div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:kjw040416@gmail.com">kjw040416@gmail.com</a>
+    </footer>
+    <!-- //footer -->
+    <script>
+        // 선택자
+        const quizwrap = document.querySelector(".quiz__wrap");
+
+        // 문제 정보
+        const quizInfo = [
+            {
+                date: "2021년 1회",
+                type: "정보처리기능사",
+                question: "2진수의 1011의 1의 보수는?",
+                choices: {
+                    1: "0100",
+                    2: "0111",
+                    3: "1011",
+                    4: "1100"
+                },
+                answer: "1",
+                desc: "1의 보수는 1은 0으로, 0은 1으로 바꾸어 주면 답이 됩니다."
+            },
+            {
+                date: "2021년 1회",
+                type: "정보처리기능사",
+                question: "입출력 조작의 시간과 중앙처리장치의 처리시간과의 불균형을 보완하는 것은?",
+                choices: {
+                    1: "opcode",
+                    2: "operand",
+                    3: "length",
+                    4: "question mark"
+                },
+                answer: "1",
+                desc: "명령어의 구성명령어 코드부 + 주소부 (한글),<br> OP-code + Operand (영문)"
+            },
+            {
+                date: "2021년 1회",
+                type: "정보처리기능사",
+                question: "반가산기(Half-Adder)의 논리회로도에서 자리올림이 발생하는 회로는?",
+                choices: {
+                    1: "OR",
+                    2: "AND",
+                    3: "NOT",
+                    4: "ExclusiveOR"
+                },
+                answer: "2",
+                desc: "반가산기 구성: S = A XOR B, C = A AND B, <br>S : SUM(합), C : Carry(자리올림)"
+            },
+            {
+                date: "2021년 1회",
+                type: "정보처리기능사",
+                question: "불린(Boolean) 대수의 정리 중 틀린 것은?",
+                choices: {
+                    1: "1·A=A",
+                    2: "0+A=A",
+                    3: "1+A=A",
+                    4: "0·A=0"
+                },
+                answer: "3",
+                desc: "1 + A = 1 입니다."
+            },
+            {
+                date: "2021년 1회",
+                type: "정보처리기능사",
+                question: "기억 장치 고유의 번지로서 0, 1, 2, 3, ...과 같이 16진수로 약속하여 순서대로 정해 놓은 번지는?",
+                choices: {
+                    1: "상대번지",
+                    2: "필수번지",
+                    3: "절대번지",
+                    4: "선택번지"
+                },
+                answer: "3",
+                desc: "절대번지는 처음부터 순서대로 0, 1, 2, 3 과같이 주소를 부여 하는 방식입니다."
+            }
+        ]
+
+        // 문제 출력
+        const updateQuiz = () => {
+            const quizArray = [];
+            quizInfo.forEach((quiz, index) => {
+                quizArray.push(`
+                <div class="quiz">
+                    <div class="quiz__header">${quiz.date} ${quiz.type}</div>
+                    <div class="quiz__main">
+                        <div class="question">${index + 1 + ". "} ${quiz.question}</div >
+                        <div class="choices">
+                            <label for="choice1_${index}">
+                                <input type="radio" id="choice1_${index}" name="choice_${index}" value="1">
+                                <span>${quiz.choices[1]}</span>
+                            </label>
+                            <label for="choice2_${index}">
+                                <input type="radio" id="choice2_${index}" name="choice_${index}" value="2">
+                                <span>${quiz.choices[2]}</span>
+                            </label>
+                            <label for="choice3_${index}">
+                                <input type="radio" id="choice3_${index}" name="choice_${index}" value="3">
+                                <span>${quiz.choices[3]}</span>
+                            </label>
+                            <label for="choice4_${index}">
+                                <input type="radio" id="choice4_${index}" name="choice_${index}" value="4">
+                                <span>${quiz.choices[4]}</span>
+                            </label>
+                        </div>
+                        <div class="answer none">${quiz.answer}</div>
+                        <div class="desc none">${quiz.desc}</div>
+                    </div >
+                    <div class="quiz__footer">
+                        <button class="confirm">정답 확인하기</button>
+                    </div>
+                </div >
+                `);
+
+
+                quizwrap.innerHTML = quizArray.join(""); // 배열 사시의 ,없애기
+            });
+        }
+        updateQuiz();
+
+        // 정답 확인
+
+    </script>
+</body>
+
+</html>

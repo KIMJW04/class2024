@@ -50,14 +50,13 @@
                             <span></span>
                         </label>
                     </div>
-                    <div class="answer "></div>
-                    <div class="desc "></div>
+                    <div class="answer none"></div>
+                    <div class="desc none"></div>
                 </div>
                 <div class="quiz__footer">
                     <button class="confirm">정답 확인하기</button>
                 </div>
             </div>
-        </div>
         </div>
     </main>
     <!-- //main -->
@@ -70,12 +69,13 @@
         // 선택자
         const quizWrap = document.querySelector(".quiz__wrap");
         const quizHeader = quizWrap.querySelector(".quiz__header");
-        const quizType = quizWrap.querySelector(".quiz__header .type");
         const quizQuestion = quizWrap.querySelector(".quiz__main .question")
         const quizChoices = quizWrap.querySelectorAll(".quiz__main .choices span");
+        const quizChoice_box = quizWrap.querySelectorAll(".quiz__main .choices");
         const quizAnswer = quizWrap.querySelector(".quiz__main .answer");
         const quizDesc = quizWrap.querySelector(".quiz__main .desc");
-        const quizConfirm = quizWrap.querySelector(".quiz__main .confirm");
+        const quizConfirm = quizWrap.querySelector(".quiz__footer .confirm");
+        const quizSelects = quizWrap.querySelectorAll(".quiz__main .choices input");
 
         // 문제 정보
         const quizInfo = {
@@ -84,17 +84,45 @@
             num: "01",
             question: "2진수의 1011의 1의 보수는?",
             choices: ["0100", "0111", "1011", "1100"],
-            answer: "0100",
+            answer: "1",
             desc: "1의 보수는 1은 0으로, 0은 1으로 바꾸어 주면 답이 됩니다."
         }
 
         // 문제 출력
         quizHeader.innerHTML = quizInfo.date + "" + quizInfo.type;
         quizQuestion.innerHTML = quizInfo.num + ". " + quizInfo.question;
+        quizAnswer.innerHTML = quizInfo.answer;
+        quizDesc.innerHTML = quizInfo.desc;
 
-        for (let i = 0; i < quizInfo.choices.length; i++) {
+        for (let i = 0; i < quizChoices.length; i++) {
             quizChoices[i].textContent = quizInfo.choices[i];
         }
+
+        // 정답확인
+        quizConfirm.addEventListener("click", () => {
+            let seletedChoice = null;
+
+            for (let i = 0; i < quizSelects.length; i++) {
+                if (quizSelects[i].checked) {
+                    seletedChoice = quizSelects[i].value;
+                    break;
+                }
+            }
+            if (seletedChoice !== null) {
+                if (seletedChoice == quizInfo.answer) {
+                    alert("정답입니다.");
+                    quizDesc.classList.remove("none");
+                }
+                else {
+                    alert("오답입니다.");
+                    quizAnswer.classList.remove("none");
+                    quizDesc.classList.remove("none");
+                }
+            }
+            else {
+                alert("보기를 선택해주세요!!");
+            }
+        })
     </script>
 </body>
 
