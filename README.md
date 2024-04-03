@@ -22,6 +22,17 @@
 - 반복문(for(),forEach())
 - 매서드(innerHTML(), classList.add, addEventListener, if문)
 
+[퀴즈03](https://kimjw04.github.io/class2024/quiz/quiz03.html)   
+- 변수, 배열, 객체   
+- 선택자(querySelector(), querySelectorAll())   
+- 반복문(for(), break문)   
+- 매서드 (innerHTML(), classList.add ,addEventListener, if문)
+
+[퀴즈04](https://kimjw04.github.io/class2024/quiz/quiz04.html)   
+- 변수, 배열, 객체, 템플릿 리터럴   
+- 선택자(querySelector(), querySelectorAll())   
+- 반복문(forEach())   
+- 매서드 (join, push(), innerHTML())
 
 
 ### VScode 확장 프로그램

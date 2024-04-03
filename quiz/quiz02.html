@@ -287,7 +287,7 @@
         })
 
         // 정답확인 / 이거는 조금 다르게 매개변수선언 forEach문으로 quizconfirm에서 값을 가져와서 btn에 값을 넣고 num에 갯수샘
-        quizConfirm.forEach(function (btn, num) {
+        quizConfirm.forEach(function (btn, num) {   // 몇번을 클릭했는지 num으로 확인
             btn.addEventListener("click", function () { //위의 반복문에 quizConfirm을 통해 btn에 값을 넣었기 때문에 quizConfrim은 버튼임으로 버튼 클릭을 했는지 안했는지 값을 받아옴 그리고 클릭이벤트가 발생하면 아래 조건문이 실행됨
                 const userAnswer = quizInput[num].values// 사용자의 정답 / 가독성을 위해 값을 변수 선언해서 넣어줌
                 const correctAnswer = quizAnswer[num].values // 정답지의 정답 / 가독성을 위해 값을 변수 선언해서 넣어줌

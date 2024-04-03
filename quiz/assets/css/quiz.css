@@ -312,3 +312,52 @@ body::after {
     color: #7a912e;
     cursor: pointer;
 }
+
+/* good, bad */
+.quiz__wrap .quiz.good {
+    position: relative;
+}
+
+.quiz__wrap .quiz.good::before {
+    content: '';
+    width: 100px;
+    height: 100px;
+    border: 10px solid red;
+    border-radius: 50%;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 100;
+}
+
+.quiz__wrap .quiz.bad {
+    position: relative;
+}
+
+.quiz__wrap .quiz.bad::before {
+    content: '';
+    width: 170px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    z-index: 100;
+    border-radius: 30px;
+    transform: rotate(45deg);
+    z-index: 100;
+}
+
+.quiz__wrap .quiz.bad::after {
+    content: '';
+    width: 170px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    z-index: 100;
+    border-radius: 30px;
+    transform: rotate(-45deg);
+    z-index: 100;
+}
