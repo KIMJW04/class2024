@@ -101,6 +101,13 @@ li {
     margin: 0 auto;
 }
 
+@media (max-width: 800px) {
+    .container {
+        width: 100%;
+        padding: 0 16px;
+    }
+}
+
 /* 헤더 영역 */
 #header {
     text-align: center;
