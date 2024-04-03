@@ -313,6 +313,25 @@ body::after {
     cursor: pointer;
 }
 
+.quiz__footer .next {
+    background-color: #7a912e;
+    color: #fff;
+    width: 100%;
+    padding: 20px;
+    border: 3px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+}
+
+.quiz__footer .next:hover {
+    background-color: transparent;
+    border: 1px dashed #7a912e;
+    color: #7a912e;
+    cursor: pointer;
+}
+
 /* good, bad */
 .quiz__wrap .quiz.good {
     position: relative;

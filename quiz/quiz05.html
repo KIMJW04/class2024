@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 05</title>
+    <link rel="stylesheet" href="assets/css/quiz.css">
+</head>
+
+<body>
+    <header id="header">
+        <h1>
+            <a href="index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quiz01.html">01</a></li>
+                <li><a href="quiz02.html">02</a></li>
+                <li><a href="quiz03.html">03</a></li>
+                <li><a href="quiz04.html">04</a></li>
+                <li class="active"><a href="quiz05.html">05</a></li>
+                <li><a href="quiz06.html">06</a></li>
+                <li><a href="quiz07.html">06</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap">
+        </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:kjw040416@gmail.com">kjw040416@gmail.com</a>
+    </footer>
+    <!-- //footer -->
+    <script>
+        // 선택자
+        const quizWrap = document.querySelector(".quiz__wrap");
+        const quizConfirm = quizWrap.querySelector(".quiz__footer .confirm");
+
+        // 문제 정보
+        const quizinfo = [
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "피변조파로부터 원래의 신호파를 만드는 것을 무엇이라 하는가?",
+                choices: ["발진", "정류", "증폭", "복조"],
+                answer: 4,
+                desc: "피변조파는 변조된 신호를 의미합니다. 변조된 신호를 원래의 신호로 만드는 것을 복조라고 합니다."
+            },
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "데이터베이스를 사용하는 경우의 장점이 아닌 것은?",
+                choices: [
+                    "데이터의 무결성 유지",
+                    "데이터의 공용 사용",
+                    "데이터의 일관성 유지",
+                    "데이터 중복의 최대화"
+                ],
+                answer: 4,
+                desc: "데이터베이스를 사용하는 경우의 장점이 아닌 것은 데이터공용사용입니다.."
+            },
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "연산작업을 할 때, 연산의 중간 결과나 데이터 저장시 레지스터를 사용하는 주된 이유는?",
+                choices: [
+                    "인터럽트 요청을 방지하기 위하여",
+                    "기억 장소를 절약하기 위하여",
+                    "연산 속도 향상을 위하여",
+                    "연산의 정확성을 위하여"
+                ],
+                answer: 4,
+                desc: "연산작업을 할 때, 연산의 중간 결과나 데이터 저장시 레지스터를 사용하는 주된 이유는 연산속도 향상을 위해서 입니다."
+            },
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "컴퓨터에 의하여 다음에 실행될 명령어의 주소가 저장되어 있는 기억 장소는?",
+                choices: [
+                    "메모리 레지스터(Memory Register)",
+                    "프로그램 카운터(Program Counter)",
+                    "명령어 레지스터(Instruction Register)",
+                    "인덱스 레지스터(Index Register)"
+                ],
+                answer: 2,
+                desc: "프로그램 카운터는 컴퓨터에의하여 다음에 실행될 명령어의 주소가 저장되어있는 기억장소입니다."
+            },
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "채널(Channel)은 어느 곳에 위치하는가?",
+                choices: [
+                    "주기억장치와 입·출력장치의 중간에 위치한다.",
+                    "주기억장치와 CPU의 중간에 위치한다.",
+                    "연산장치와 레지스터 중간에 위치한다.",
+                    "주기억장치와 보조기억장치의 양쪽에 위치한다."
+                ],
+                answer: 1,
+                desc: "채널은 주기억장치와 입출력장치의 중간에 위치합니다."
+            },
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "기억장치의 종류에 해당되지 않는 메모리(Memory)는?",
+                choices: [
+                    "ROM",
+                    "REM",
+                    "RAM",
+                    "EPROM"
+                ],
+                answer: 2,
+                desc: "기억장치의 종류에 해당되지 않는 메모리(Memory)는 REM 입니다."
+            },
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은?",
+                choices: [
+                    "REMOVE FROM INSA WHERE SNO = 100 ;",
+                    "DROP TABLE INSA WHERE SNO = 100 ;",
+                    "DESTROY INSA WHERE SNO = 100 ;",
+                    "DELETE FROM INSA WHERE SNO = 100 ;"
+                ],
+                answer: 4,
+                desc: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은 DELETE FROM INSA WHERE SNO = 100 ; 입니다.."
+            },
+        ]
+
+        // 문제 출력
+        const updateQuiz = (index) => {
+            let quizWrapTag = `
+                <div class="quiz">
+                    <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
+                    <div class="quiz__main">
+                        <div class="question">${index + 1}. ${quizinfo[index].question}</div>
+                        <div class="choices">
+                            <label for="choice1">
+                                <input type="radio" id="choice1" name="choice" value="1">
+                                <span>${quizinfo[index].choices[0]}</span>
+                            </label>
+                            <label for="choice2">
+                                <input type="radio" id="choice2" name="choice" value="2">
+                                <span>${quizinfo[index].choices[1]}</span>
+                            </label>
+                            <label for="choice3">
+                                <input type="radio" id="choice3" name="choice" value="3">
+                                <span>${quizinfo[index].choices[2]}</span>
+                            </label>
+                            <label for="choice4">
+                                <input type="radio" id="choice4" name="choice" value="4">
+                                <span>${quizinfo[index].choices[3]}</span>
+                            </label>
+                        </div>
+                        <div class="answer none">${quizinfo[index].answer}</div>
+                        <div class="desc none">${quizinfo[index].desc}</div>
+                    </div>
+                    <div class="quiz__footer">
+                        <button class="confirm ">정답 확인하기</button>
+                        <button class="next none">다음 문제</button>
+                    </div>
+                </div>
+            `;
+            quizWrap.innerHTML = quizWrapTag;
+        }
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            const quiznum = 0;
+            updateQuiz(quiznum);
+
+            quizConfirm.addEventListener("click",
+                quiznum++
+            );
+        });
+    </script>
+</body>
+
+</html>
