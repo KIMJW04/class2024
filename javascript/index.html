@@ -73,10 +73,14 @@
 
         main nav ul {
             display: flex;
+            flex-wrap: wrap;
+            /* Allow wrapping of list items */
+            justify-content: center;
+            /* Center items horizontally */
         }
 
         main nav ul li {
-            margin: 10px;
+            margin: 3px;
         }
 
         main nav ul li a {
@@ -89,7 +93,6 @@
             color: #15c524;
             background-color: #fff;
             text-decoration: none;
-            transition: all 0.3s;
         }
 
         main nav ul li a:hover {
