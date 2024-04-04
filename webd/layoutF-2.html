@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layoutF-1</title>
+    <style>
+        * {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            margin: 0 auto;
+            height: 1000px;
+        }
+
+        #header {
+            margin: 0 auto;
+            width: 1340px;
+            display: flex;
+        }
+
+        #header .container {
+            display: flex;
+        }
+
+        #header .container .logo {
+            width: 20%;
+            height: 100px;
+            background-color: #ddd;
+        }
+
+        #header .container .menu {
+            width: 80%;
+            height: 100px;
+            background-color: #d3cece;
+        }
+
+        #slider {
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        #slider .slider {
+            width: 100%;
+            height: 350px;
+            background-color: #cccbcb;
+            position: relative;
+        }
+
+        #slider .slider .links {
+            position: absolute;
+            width: 1340px;
+            height: 100px;
+            background-color: #b8b8b8;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+
+        #sectino1 {
+            margin: 0 auto;
+            width: 1340px;
+            height: 430px;
+        }
+
+        #sectino1 .banner {
+            width: 1340px;
+            height: 170px;
+            background-color: #a39f9f;
+        }
+
+        #sectino1 .section {
+            width: 1340px;
+            height: 260px;
+            display: flex;
+        }
+
+        #sectino1 .section .gallery1 {
+            width: 50%;
+            height: 100%;
+            background-color: #918787;
+        }
+
+        #sectino1 .section .gallery2 {
+            width: 50%;
+            background-color: #7a6666;
+            height: 100%;
+        }
+
+        #footer {
+            margin: 0 auto;
+            width: 1340px;
+            height: 120px;
+            display: flex;
+        }
+
+        #footer .logo {
+            width: 80%;
+            height: 120px;
+            background-color: #928f8f;
+        }
+
+        #footer .footer2 {
+            width: 20%;
+            height: 120px;
+        }
+
+        #footer .footer2 .menu {
+            width: 100%;
+            height: 60px;
+            background-color: #878080;
+        }
+
+        #footer .footer2 .copyright {
+            width: 100%;
+            height: 60px;
+            background-color: #786b6b;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="container">
+                <div class="logo"></div>
+                <div class="menu"></div>
+            </div>
+        </header>
+        <article id="slider">
+            <div class="slider">
+                <div class="links"></div>
+            </div>
+        </article>
+        <section id="sectino1">
+            <div class="banner"></div>
+            <div class="section">
+                <div class="gallery1"></div>
+                <div class="gallery2"></div>
+            </div>
+        </section>
+        <footer id="footer">
+            <div class="logo"></div>
+            <div class="footer2">
+                <div class="menu"></div>
+                <div class="copyright"></div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>

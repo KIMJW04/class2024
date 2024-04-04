@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layoutD-2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            width: 100%;
+            height: 750px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #aside {
+            width: 200px;
+            height: 650px;
+        }
+
+        #aside .logo {
+            width: 100%;
+            height: 100px;
+            background-color: #8f8383;
+        }
+
+        #aside .menu {
+            width: 100%;
+            height: 550px;
+            background-color: #655353;
+        }
+
+        #main {
+            width: calc(100% - 200px);
+            height: 650px;
+        }
+
+        #slider {
+            height: 400px;
+            display: flex;
+        }
+
+        #slider .slider {
+            width: 100%;
+            background-color: #7f5757;
+        }
+
+        #slider .img {
+            width: 230px;
+            background-color: #544545;
+        }
+
+        .section {
+            width: 100%;
+            display: flex;
+        }
+
+        .section .gongji {
+            width: 50%;
+            height: 250px;
+            background-color: #9b8c8c;
+        }
+
+        .section .gallery {
+            width: 50%;
+            height: 250px;
+            background-color: #907777;
+        }
+
+        #footer {
+            width: 100%;
+            background-color: #777676;
+            display: flex;
+        }
+
+        #footer .logo {
+            width: 200px;
+            height: 100px;
+            background-color: #595858;
+        }
+
+        #footer .copyright {
+            width: calc(100% - 450px);
+            height: 100px;
+            background-color: #484141;
+        }
+
+        #footer .familysite {
+            width: 250px;
+            height: 100px;
+            background-color: #3a2c2c;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <aside id="aside">
+            <div class="logo"></div>
+            <div class="menu"></div>
+        </aside>
+        <main id="main">
+            <div id="slider">
+                <div class="slider"></div>
+                <div class="img"></div>
+            </div>
+            <section class="section">
+                <div class="gongji"></div>
+                <div class="gallery"></div>
+            </section>
+        </main>
+        <footer id="footer">
+            <div class="logo"></div>
+            <div class="copyright"></div>
+            <div class="familysite"></div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layoutE-1</title>
+    <style>
+        * {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+
+        #main {
+            width: 100%;
+            height: calc(100% - 120px);
+            display: flex;
+        }
+
+        #aside {
+            width: 200px;
+        }
+
+        #aside .logo {
+            width: 100%;
+            height: 10%;
+            background-color: #ff9d9d;
+        }
+
+        #aside .menu {
+            width: 100%;
+            height: 90%;
+            background-color: #f09393;
+        }
+
+        #sectino .img {
+            width: 400px;
+            height: 15%;
+            background-color: #e58c8c;
+        }
+
+        #sectino .gonggi {
+            width: 400px;
+            height: 35%;
+            background-color: #d88383;
+        }
+
+        #sectino .gallery {
+            width: 400px;
+            height: 35%;
+            background-color: #c87b7b;
+        }
+
+        #sectino .link {
+            width: 400px;
+            height: 15%;
+            background-color: #b06b6b;
+        }
+
+        #main .sliyder {
+            width: calc(100% - 400px - 200px);
+            background-color: #a36363;
+        }
+
+        #footer {
+            width: 100%;
+            height: 120px;
+            display: flex;
+        }
+
+        #footer .logo {
+            width: 200px;
+            height: 120px;
+            background-color: #945a5a;
+        }
+
+        #footer .footer2 {
+            width: calc(100% - 200px - 200px);
+        }
+
+        #footer .footer2 .menu {
+            width: 100%;
+            height: 60px;
+            background-color: #8a5555;
+        }
+
+        #footer .footer2 .copyright {
+            width: 100%;
+            height: 60px;
+            background-color: #764949;
+        }
+
+        #footer .site {
+            width: 200px;
+            height: 120px;
+            background-color: #6c4040;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <main id="main">
+            <aside id="aside">
+                <div class="logo"></div>
+                <div class="menu"></div>
+            </aside>
+            <sectino id="sectino">
+                <div class="img"></div>
+                <div class="gonggi"></div>
+                <div class="gallery"></div>
+                <div class="link"></div>
+            </sectino>
+            <div class="sliyder"></div>
+        </main>
+        <footer id="footer">
+            <div class="logo"></div>
+            <div class="footer2">
+                <div class="menu"></div>
+                <div class="copyright"></div>
+            </div>
+            <div class="site"></div>
+        </footer>
+    </div>
+</body>
+
+</html>
