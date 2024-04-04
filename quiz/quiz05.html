@@ -40,7 +40,6 @@
     <script>
         // 선택자
         const quizWrap = document.querySelector(".quiz__wrap");
-        const quizConfirm = quizWrap.querySelector(".quiz__footer .confirm");
 
         // 문제 정보
         const quizinfo = [
@@ -132,6 +131,8 @@
             },
         ]
 
+        // 변수
+        let currentIndex = 0;
         // 문제 출력
         const updateQuiz = (index) => {
             let quizWrapTag = `
@@ -139,7 +140,7 @@
                     <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
                     <div class="quiz__main">
                         <div class="question">${index + 1}. ${quizinfo[index].question}</div>
-                        <div class="choices">
+                        <div class="choices ">
                             <label for="choice1">
                                 <input type="radio" id="choice1" name="choice" value="1">
                                 <span>${quizinfo[index].choices[0]}</span>
@@ -167,16 +168,65 @@
                 </div>
             `;
             quizWrap.innerHTML = quizWrapTag;
+
+            // 선택자
+            const quizConfirm = quizWrap.querySelector(".confirm");
+            const quiznext = quizWrap.querySelector(".next");
+            const trueAnswer = quizWrap.querySelector(".answer");
+            const quizChoices = quizWrap.querySelector(".choices");
+            const quizDesc = quizWrap.querySelector(".desc");
+            const answerElement = quizWrap.querySelector(".answer");
+            const quizElement = quizWrap.querySelector(".quiz");
+
+
+            // 정답 버튼 클릭
+            quizConfirm.addEventListener("click", () => {
+                const quizChecked = quizWrap.querySelector("input[name='choice']:checked");
+                if (quizChecked) {
+                    const userAnswer = quizChecked.value;                   // 사용자가 클릭한 정답
+                    const quizAnswer = quizinfo[currentIndex].answer;       // 정답지의 정답
+
+                    if (userAnswer == quizAnswer) {
+                        quizElement.classList.add("good");
+                    } else {
+                        quizElement.classList.add("bad");
+                        trueAnswer.classList.remove("none");
+                    }
+                    quizDesc.classList.remove("none");
+                    quizChoices.classList.add("none");
+                    quiznext.classList.remove("none");
+                    quizConfirm.classList.add("none");
+
+                } else {
+                    alert("답을 선택해주세요!");
+                }
+
+                // const userAnswer = quizChecked.value;              
+
+            })
+
+            // 다음 문제 버튼을 클릭하면 alert()
+            quiznext.addEventListener("click", () => {
+                if (currentIndex < quizinfo.length - 1) {
+                    currentIndex++;
+                    updateQuiz(currentIndex);
+                    quizDesc.classList.add("none");
+                    quizChoices.classList.remove("none");
+                    quiznext.classList.add("none");
+                    quizConfirm.classList.remove("none");
+                    quizElement.classList.remove("bad");
+                    quizElement.classList.remove("good");
+                } else {
+                    alert("퀴즈가 종료됐습니다");
+                    currentIndex = 0;
+                    updateQuiz(currentIndex);
+                }
+            })
         }
 
         // 페이지가 로드된 후 실행
         document.addEventListener("DOMContentLoaded", () => {
-            const quiznum = 0;
-            updateQuiz(quiznum);
-
-            quizConfirm.addEventListener("click",
-                quiznum++
-            );
+            updateQuiz(currentIndex);
         });
     </script>
 </body>

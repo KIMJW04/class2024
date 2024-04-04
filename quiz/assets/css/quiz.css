@@ -327,8 +327,8 @@ body::after {
 
 .quiz__footer .next:hover {
     background-color: transparent;
-    border: 1px dashed #7a912e;
-    color: #7a912e;
+    border: 1px dashed #70862a;
+    color: #70862a;
     cursor: pointer;
 }
 
