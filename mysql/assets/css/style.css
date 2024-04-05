@@ -281,7 +281,7 @@ li {
 
 
 /* footer */
-.footer {
+#footer {
     padding: 100px;
     text-align: center;
     font-family: var(--fontN);
