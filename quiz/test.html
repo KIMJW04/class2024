@@ -19,10 +19,10 @@
                 <li><a href="quiz02.html">02</a></li>
                 <li><a href="quiz03.html">03</a></li>
                 <li><a href="quiz04.html">04</a></li>
-                <li class="active"><a href="quiz05.html">05</a></li>
+                <li><a href="quiz05.html">05</a></li>
                 <li><a href="quiz06.html">06</a></li>
                 <li><a href="quiz07.html">07</a></li>
-                <li><a href="test.html">T</a></li>
+                <li class="active"><a href="test.html">T</a></li>
             </ul>
         </nav>
     </header>
@@ -134,6 +134,7 @@
 
         // 변수
         let currentIndex = 0;
+        let userAnswers = [];
         // 문제 출력
         const updateQuiz = (index) => {
             let quizWrapTag = `
@@ -168,7 +169,9 @@
                     </div>
                 </div>
             `;
-            quizWrap.innerHTML = quizWrapTag;
+            const ResultQUiz =
+
+                quizWrap.innerHTML = quizWrapTag;
 
             // 선택자
             const quizConfirm = quizWrap.querySelector(".confirm");
@@ -186,7 +189,8 @@
                 if (quizChecked) {
                     const userAnswer = quizChecked.value;                   // 사용자가 클릭한 정답
                     const quizAnswer = quizinfo[currentIndex].answer;       // 정답지의 정답
-
+                    userAnswers[currentIndex] = userAnswer;                 // 사용자 정답 저장
+                    console.log(userAnswers);
                     if (userAnswer == quizAnswer) {
                         quizElement.classList.add("good");
                     } else {
@@ -201,8 +205,6 @@
                 } else {
                     alert("답을 선택해주세요!");
                 }
-
-                // const userAnswer = quizChecked.value;              
 
             })
 
