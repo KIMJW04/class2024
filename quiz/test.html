@@ -131,36 +131,50 @@
         let userAss = [];
         let quizArray = [];
         const quizend = () => {
-            const resultpage_quiz = quizWrap.querySelector(".quizsresult");
             quizArray.push(`<div class="totalResults">   
                 <h2>결과 확인</h2>
                 <div class="result">맞힌 갯수 : ${userAnswernum} / ${quizinfo.length}</div>
             </div>
             `)
             quizinfo.forEach((quiz, index) => {
-                quizArray.push(`
-                <div class="quizsresult">
-                    <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
-                    <div class="quiz__main">
-                        <div class="question">${index + 1}. ${quizinfo[index].question}</div>
-                        <div class="choices">
-                            <div class="choice">1. ${quizinfo[index].choices[0]}</div>
-                            <div class="choice">2. ${quizinfo[index].choices[1]}</div>
-                            <div class="choice">3. ${quizinfo[index].choices[2]}</div>
-                            <div class="choice">4. ${quizinfo[index].choices[3]}</div>
+                if (userAss[index] == quizinfo[index].answer) {
+                    quizArray.push(`
+                    <div class="quizsresult good">
+                        <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
+                        <div>선택한 답 : ${userAss[index]}</div>
+                        <div class="quiz__main">
+                            <div class="question">${index + 1}. ${quizinfo[index].question}</div>
+                            <div class="choices">
+                                <div class="choice">1. ${quizinfo[index].choices[0]}</div>
+                                <div class="choice">2. ${quizinfo[index].choices[1]}</div>
+                                <div class="choice">3. ${quizinfo[index].choices[2]}</div>
+                                <div class="choice">4. ${quizinfo[index].choices[3]}</div>
+                            </div>
+                            <div class="answer">${quizinfo[index].answer}</div>
+                            <div class="desc">${quizinfo[index].desc}</div>
                         </div>
-                        <div class="answer">${quizinfo[index].answer}</div>
-                        <div class="desc">${quizinfo[index].desc}</div>
                     </div>
-                </div>
-                `);
-                // if (userAss[index] == quizinfo[index].answer) {
-                //     resultpage_quiz.classList.add("good");
-                // } else {
-                //     resultpage_quiz.classList.add("bad");
-                // }
+                    `);
+                } else {
+                    quizArray.push(`
+                    <div class="quizsresult bad">
+                        <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
+                        <div>선택한 답 : ${userAss[index]}</div>
+                        <div class="quiz__main">
+                            <div class="question">${index + 1}. ${quizinfo[index].question}</div>
+                            <div class="choices">
+                                <div class="choice">1. ${quizinfo[index].choices[0]}</div>
+                                <div class="choice">2. ${quizinfo[index].choices[1]}</div>
+                                <div class="choice">3. ${quizinfo[index].choices[2]}</div>
+                                <div class="choice">4. ${quizinfo[index].choices[3]}</div>
+                            </div>
+                            <div class="answer">${quizinfo[index].answer}</div>
+                            <div class="desc">${quizinfo[index].desc}</div>
+                        </div>
+                    </div>
+                    `);
+                }
             });
-
             quizWrap.innerHTML = quizArray.join('');
         }
 
