@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 테스트</title>
+    <link rel="stylesheet" href="assets/css/quiz.css">
+</head>
+
+<body>
+    <header id="header">
+        <h1>
+            <a href="index.html">퀴즈</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quiz01.html">01</a></li>
+                <li><a href="quiz02.html">02</a></li>
+                <li><a href="quiz03.html">03</a></li>
+                <li><a href="quiz04.html">04</a></li>
+                <li><a href="quiz05.html">05</a></li>
+                <li><a href="quiz06.html">06</a></li>
+                <li><a href="quiz07.html">07</a></li>
+                <li class="active"><a href="test.html">T</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap">
+            <div class="userResults none">
+                <h1>결과 확인</h1>
+                <div>맞힌 갯수: <span id="userScore"></span> / <span id="totalQuestions"></span></div>
+                <ul id="userAnswersList"></ul> <!-- 사용자 답안 목록을 표시할 리스트 -->
+                <div class="quizsresult"></div>
+            </div>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:kjw040416@gmail.com">kjw040416@gmail.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script>
+        // 선택자
+        const quizWrap = document.querySelector(".quiz__wrap");
+        const Resu = quizWrap.querySelector(".userResults");
+        const userScoreElement = document.querySelector("#userScore");
+        const totalQuestionsElement = document.querySelector("#totalQuestions");
+        const userAnswersList = document.querySelector("#userAnswersList"); // 사용자 답안 목록 선택자 추가
+
+        // 문제 정보
+        const quizinfo = [
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "피변조파로부터 원래의 신호파를 만드는 것을 무엇이라 하는가?",
+                choices: ["발진", "정류", "증폭", "복조"],
+                answer: 4,
+                desc: "피변조파는 변조된 신호를 의미합니다. 변조된 신호를 원래의 신호로 만드는 것을 복조라고 합니다."
+            },
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "데이터베이스를 사용하는 경우의 장점이 아닌 것은?",
+                choices: [
+                    "데이터의 무결성 유지",
+                    "데이터의 공용 사용",
+                    "데이터의 일관성 유지",
+                    "데이터 중복의 최대화"
+                ],
+                answer: 4,
+                desc: "데이터베이스를 사용하는 경우의 장점이 아닌 것은 데이터 중복의 최대화입니다."
+            },
+            {
+                date: "2017년 상시",
+                type: "정보처리기능사",
+                question: "연산작업을 할 때, 연산의 중간 결과나 데이터 저장시 레지스터를 사용하는 주된 이유는?",
+                choices: [
+                    "인터럽트 요청을 방지하기 위하여",
+                    "기억 장소를 절약하기 위하여",
+                    "연산 속도 향상을 위하여",
+                    "연산의 정확성을 위하여"
+                ],
+                answer: 3,
+                desc: "연산작업을 할 때, 레지스터를 사용하는 주된 이유는 연산 속도 향상을 위해서입니다."
+            }
+            // 추가 문제들도 이어서 포함할 수 있습니다.
+        ];
+
+        // 변수
+        let currentIndex = 0;
+        let userScore = 0;
+        const userAnswers = []; // 사용자 답안을 기록할 배열
+
+        // 문제 표시 함수
+        const updateQuiz = (index) => {
+            const currentQuiz = quizinfo[index];
+            const quizHTML = `
+                <div class="quiz">
+                    <div class="quiz__header">${currentQuiz.date} ${currentQuiz.type}</div>
+                    <div class="quiz__main">
+                        <div class="question">${index + 1}. ${currentQuiz.question}</div>
+                        <div class="choices">
+                            ${currentQuiz.choices.map((choice, i) => `
+                                <label for="choice${i + 1}">
+                                    <input type="radio" id="choice${i + 1}" name="choice" value="${i + 1}">
+                                    <span>${choice}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                        <div class="answer none">${currentQuiz.answer}</div>
+                        <div class="desc none">${currentQuiz.desc}</div>
+                    </div>
+                    <div class="quiz__footer">
+                        <button class="confirm">정답 확인하기</button>
+                        <button class="next none">다음 문제</button>
+                    </div>
+                </div>
+            `;
+            quizWrap.innerHTML = quizHTML;
+
+            const quizElement = quizWrap.querySelector(".quiz");
+            const quizConfirm = quizElement.querySelector(".confirm");
+            const quizNext = quizElement.querySelector(".next");
+            const trueAnswer = quizElement.querySelector(".answer");
+            const quizChoices = quizElement.querySelector(".choices");
+            const quizDesc = quizElement.querySelector(".desc");
+
+            quizConfirm.addEventListener("click", () => {
+                const selectedChoice = quizElement.querySelector("input[name='choice']:checked");
+                if (selectedChoice) {
+                    const userAnswer = parseInt(selectedChoice.value);
+                    const correctAnswer = currentQuiz.answer;
+                    
+                    if (userAnswer === correctAnswer) {
+                        quizElement.classList.add("good");
+                        userScore++;
+                    } else {
+                        quizElement.classList.add("bad");
+                        trueAnswer.classList.remove("none");
+                    }
+
+                    quizDesc.classList.remove("none");
+                    quizChoices.classList.add("none");
+                    quizNext.classList.remove("none");
+                    quizConfirm.classList.add("none");
+
+                    // 사용자 답안 기록
+                    userAnswers.push({
+                        question: currentQuiz.question,
+                        userAnswer: currentQuiz.choices[userAnswer - 1],
+                        correctAnswer: currentQuiz.choices[correctAnswer - 1]
+                    });
+                } else {
+                    alert("답을 선택해주세요!");
+                }
+            });
+
+            quizNext.addEventListener("click", () => {
+                if (index < quizinfo.length - 1) {
+                    currentIndex++;
+                    updateQuiz(currentIndex);
+                } else {
+                    quizElement.classList.add("none");
+                    showResults();
+                }
+            });
+        };
+
+        // 결과 표시 함수
+        const showResults = () => {
+            userScoreElement.textContent = userScore;
+            totalQuestionsElement.textContent = quizinfo.length;
+            Resu.classList.remove("none");
+
+            // 사용자 답안 목록을 표시
+            userAnswers.forEach((answer) => {
+                const answerItem = document.createElement("li");
+                answerItem.textContent = `${answer.question} - 답: ${answer.userAnswer}, 정답: ${answer.correctAnswer}`;
+                userAnswersList.appendChild(answerItem);
+            });
+        };
+
+        // 페이지 로드 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            updateQuiz(currentIndex);
+        });
+    </script>
+</body>
+
+</html>
