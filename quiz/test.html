@@ -44,130 +44,85 @@
         // 문제 정보
         const quizinfo = [
             {
-                date: "2017년 상시",
-                type: "정보처리기능사",
-                question: "피변조파로부터 원래의 신호파를 만드는 것을 무엇이라 하는가?",
-                choices: ["발진", "정류", "증폭", "복조"],
-                answer: 4,
-                desc: "피변조파는 변조된 신호를 의미합니다. 변조된 신호를 원래의 신호로 만드는 것을 복조라고 합니다."
+                date: "2019년",
+                type: "웹 개발",
+                question: "웹 페이지에서 사용자가 입력한 데이터를 서버로 전송하는 방법으로 올바른 것은?",
+                choices: ["POST 메서드", "GET 메서드", "DELETE 메서드", "PUT 메서드"],
+                answer: 1,
+                desc: "웹 페이지에서 사용자가 입력한 데이터를 서버로 전송할 때는 POST 메서드를 사용합니다."
             },
             {
-                date: "2017년 상시",
-                type: "정보처리기능사",
-                question: "데이터베이스를 사용하는 경우의 장점이 아닌 것은?",
-                choices: [
-                    "데이터의 무결성 유지",
-                    "데이터의 공용 사용",
-                    "데이터의 일관성 유지",
-                    "데이터 중복의 최대화"
-                ],
+                date: "2020년",
+                type: "프로그래밍 언어",
+                question: "자바스크립트에서 변수를 선언할 때 사용하는 키워드는?",
+                choices: ["var", "let", "const", "all of the above"],
                 answer: 4,
-                desc: "데이터베이스를 사용하는 경우의 장점이 아닌 것은 데이터공용사용입니다.."
+                desc: "자바스크립트에서 변수를 선언하는 키워드로는 var, let, const가 모두 사용됩니다."
             },
             {
-                date: "2017년 상시",
-                type: "정보처리기능사",
-                question: "연산작업을 할 때, 연산의 중간 결과나 데이터 저장시 레지스터를 사용하는 주된 이유는?",
-                choices: [
-                    "인터럽트 요청을 방지하기 위하여",
-                    "기억 장소를 절약하기 위하여",
-                    "연산 속도 향상을 위하여",
-                    "연산의 정확성을 위하여"
-                ],
-                answer: 4,
-                desc: "연산작업을 할 때, 연산의 중간 결과나 데이터 저장시 레지스터를 사용하는 주된 이유는 연산속도 향상을 위해서 입니다."
+                date: "2018년",
+                type: "데이터베이스",
+                question: "데이터베이스의 테이블에서 중복된 레코드를 제거하기 위해 사용하는 SQL 구문은?",
+                choices: ["SELECT DISTINCT", "DELETE", "DROP TABLE", "UPDATE"],
+                answer: 1,
+                desc: "SELECT DISTINCT 구문은 중복된 레코드를 제거하여 유일한 값을 반환합니다."
             },
-            // {
-            //     date: "2017년 상시",
-            //     type: "정보처리기능사",
-            //     question: "컴퓨터에 의하여 다음에 실행될 명령어의 주소가 저장되어 있는 기억 장소는?",
-            //     choices: [
-            //         "메모리 레지스터(Memory Register)",
-            //         "프로그램 카운터(Program Counter)",
-            //         "명령어 레지스터(Instruction Register)",
-            //         "인덱스 레지스터(Index Register)"
-            //     ],
-            //     answer: 2,
-            //     desc: "프로그램 카운터는 컴퓨터에의하여 다음에 실행될 명령어의 주소가 저장되어있는 기억장소입니다."
-            // },
-            // {
-            //     date: "2017년 상시",
-            //     type: "정보처리기능사",
-            //     question: "채널(Channel)은 어느 곳에 위치하는가?",
-            //     choices: [
-            //         "주기억장치와 입·출력장치의 중간에 위치한다.",
-            //         "주기억장치와 CPU의 중간에 위치한다.",
-            //         "연산장치와 레지스터 중간에 위치한다.",
-            //         "주기억장치와 보조기억장치의 양쪽에 위치한다."
-            //     ],
-            //     answer: 1,
-            //     desc: "채널은 주기억장치와 입출력장치의 중간에 위치합니다."
-            // },
-            // {
-            //     date: "2017년 상시",
-            //     type: "정보처리기능사",
-            //     question: "기억장치의 종류에 해당되지 않는 메모리(Memory)는?",
-            //     choices: [
-            //         "ROM",
-            //         "REM",
-            //         "RAM",
-            //         "EPROM"
-            //     ],
-            //     answer: 2,
-            //     desc: "기억장치의 종류에 해당되지 않는 메모리(Memory)는 REM 입니다."
-            // },
-            // {
-            //     date: "2017년 상시",
-            //     type: "정보처리기능사",
-            //     question: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은?",
-            //     choices: [
-            //         "REMOVE FROM INSA WHERE SNO = 100 ;",
-            //         "DROP TABLE INSA WHERE SNO = 100 ;",
-            //         "DESTROY INSA WHERE SNO = 100 ;",
-            //         "DELETE FROM INSA WHERE SNO = 100 ;"
-            //     ],
-            //     answer: 4,
-            //     desc: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은 DELETE FROM INSA WHERE SNO = 100 ; 입니다.."
-            // },
-            // {
-            //     date: "2017년 상시",
-            //     type: "정보처리기능사",
-            //     question: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은?",
-            //     choices: [
-            //         "REMOVE FROM INSA WHERE SNO = 100 ;",
-            //         "DROP TABLE INSA WHERE SNO = 100 ;",
-            //         "DESTROY INSA WHERE SNO = 100 ;",
-            //         "DELETE FROM INSA WHERE SNO = 100 ;"
-            //     ],
-            //     answer: 4,
-            //     desc: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은 DELETE FROM INSA WHERE SNO = 100 ; 입니다.."
-            // },
-            // {
-            //     date: "2017년 상시",
-            //     type: "정보처리기능사",
-            //     question: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은?",
-            //     choices: [
-            //         "REMOVE FROM INSA WHERE SNO = 100 ;",
-            //         "DROP TABLE INSA WHERE SNO = 100 ;",
-            //         "DESTROY INSA WHERE SNO = 100 ;",
-            //         "DELETE FROM INSA WHERE SNO = 100 ;"
-            //     ],
-            //     answer: 4,
-            //     desc: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은 DELETE FROM INSA WHERE SNO = 100 ; 입니다.."
-            // },
-            // {
-            //     date: "2017년 상시",
-            //     type: "정보처리기능사",
-            //     question: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은?",
-            //     choices: [
-            //         "REMOVE FROM INSA WHERE SNO = 100 ;",
-            //         "DROP TABLE INSA WHERE SNO = 100 ;",
-            //         "DESTROY INSA WHERE SNO = 100 ;",
-            //         "DELETE FROM INSA WHERE SNO = 100 ;"
-            //     ],
-            //     answer: 4,
-            //     desc: "INSA(SNO, NAME) 테이블에서 SNO가 100인 튜플을 삭제하는 SQL 문은 DELETE FROM INSA WHERE SNO = 100 ; 입니다.."
-            // },
+            {
+                date: "2021년",
+                type: "프로그래밍 기초",
+                question: "자바스크립트에서 사용되는 비교 연산자가 아닌 것은?",
+                choices: ["===", "!==", "&&", ">="],
+                answer: 3,
+                desc: "&&는 논리 연산자이며 비교 연산자가 아닙니다."
+            },
+            {
+                date: "2019년",
+                type: "웹 프레임워크",
+                question: "React.js에서 컴포넌트의 상태를 변경할 때 사용되는 함수는?",
+                choices: ["setState()", "updateState()", "changeState()", "modifyState()"],
+                answer: 1,
+                desc: "React.js에서 컴포넌트의 상태를 변경할 때는 setState() 함수를 사용합니다."
+            },
+            {
+                date: "2020년",
+                type: "자료 구조",
+                question: "배열의 요소를 맨 뒤에 추가하는 메서드는?",
+                choices: ["push()", "pop()", "shift()", "unshift()"],
+                answer: 1,
+                desc: "배열의 push() 메서드는 배열의 끝에 요소를 추가합니다."
+            },
+            {
+                date: "2021년",
+                type: "프로그래밍 언어",
+                question: "자바스크립트에서 객체를 선언하는 방법은?",
+                choices: ["{name: 'John', age: 30}", "new Object()", "Object.create({})", "모두 정답"],
+                answer: 4,
+                desc: "자바스크립트에서 객체는 다양한 방식으로 선언할 수 있습니다."
+            },
+            {
+                date: "2018년",
+                type: "프로그래밍 기초",
+                question: "비동기 방식에서 콜백 함수를 대체하여 사용되는 ES6 기능은?",
+                choices: ["Callback", "Promise", "Async/Await", "setInterval"],
+                answer: 2,
+                desc: "Promise는 비동기 처리를 위한 콜백 함수의 대체제로 사용됩니다."
+            },
+            {
+                date: "2020년",
+                type: "프로그래밍 언어",
+                question: "배열에서 특정 요소를 제거하는 메서드는?",
+                choices: ["splice()", "slice()", "filter()", "reduce()"],
+                answer: 1,
+                desc: "배열에서 splice() 메서드는 특정 요소를 제거하거나 추가할 수 있습니다."
+            },
+            {
+                date: "2019년",
+                type: "네트워크",
+                question: "HTTP 요청 중 POST 방식은 어떤 용도로 사용되는가?",
+                choices: ["데이터 전송", "데이터 조회", "캐시 제거", "파일 삭제"],
+                answer: 1,
+                desc: "HTTP POST 요청은 데이터를 서버로 전송하기 위해 사용됩니다."
+            },
         ]
 
         // 변수

@@ -164,18 +164,21 @@ body::after {
 /* quiz_wrap */
 .quiz__wrap {
     display: flex;
-    /* align-items: center; */
-    justify-content: center;
     flex-wrap: wrap;
+    /* align-items: center; */
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .quiz__wrap .totalResults{
     width: 700px;
+    height: 140px;
     background-color: #fff;
     padding: 40px 30px;
     border-radius: 10px;
-    margin: 10px;
+    margin: 10px 10%;
 } 
+
 .totalResults h2{
     font-size: 25px;
     margin-bottom: 10px;
@@ -186,7 +189,7 @@ body::after {
     background-color: #fff;
     padding: 40px 30px;
     border-radius: 10px;
-    margin: 10px;
+    margin: 10px 10%;
 }
 
 .quizsresult .choices .choice{
