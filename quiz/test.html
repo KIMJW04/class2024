@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz test</title>
+    <title>test</title>
     <link rel="stylesheet" href="assets/css/quiz.css">
 </head>
 
@@ -23,6 +23,7 @@
                 <li><a href="quiz06.html">06</a></li>
                 <li><a href="quiz07.html">07</a></li>
                 <li class="active"><a href="test.html">T</a></li>
+                <li><a href="C-quiz01.html">C1</a></li>
             </ul>
         </nav>
     </header>
@@ -182,7 +183,7 @@
         const updateQuiz = (index) => {
             let quizWrapTag = `
                 <div class="quiz">
-                    <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
+                    <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type} </br>${index} / ${quizinfo.length}</div>
                     <div class="quiz__main">
                         <div class="question">${index + 1}. ${quizinfo[index].question}</div>
                         <div class="choices ">

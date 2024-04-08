@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C-quiz01</title>
+    <link rel="stylesheet" href="assets/css/quiz.css">
+</head>
+
+<body>
+    <header id="header">
+        <h1>
+            <a href="index.html">Quiz</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="quiz01.html">01</a></li>
+                <li><a href="quiz02.html">02</a></li>
+                <li><a href="quiz03.html">03</a></li>
+                <li><a href="quiz04.html">04</a></li>
+                <li><a href="quiz05.html">05</a></li>
+                <li><a href="quiz06.html">06</a></li>
+                <li><a href="quiz07.html">07</a></li>
+                <li class="active"><a href="C-quiz01.html">C1</a></li>
+                <li><a href="test.html">T</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap"></div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:kjw040416@gmail.com">kjw040416@gmail.com</a>
+    </footer>
+    <!-- //footer -->
+    <script>
+        // 선택자
+        const quizWrap = document.querySelector(".quiz__wrap");
+
+        // 문제 정보
+        const quizinfo = [
+            {
+                date: "2019년",
+                question: "웹 페이지에서 사용자가 입력한 데이터를 서버로 전송하는 방법으로 올바른 것은?",
+                choices: ["POST 메서드", "GET 메서드", "DELETE 메서드", "PUT 메서드"],
+                answer: 1,
+                desc: "웹 페이지에서 사용자가 입력한 데이터를 서버로 전송할 때는 POST 메서드를 사용합니다."
+            },
+        ]
+
+        // 변수
+        let currentIndex = 0;
+        let userAnswernum = 0;
+        let resultAnswer = [];
+        let quizArray = [];
+
+        // 문제 가져오기
+        const fetchQuiz = () => {
+            // 외부 JSON 파일에서 퀴즈 데이터 가져오기
+            fetch("https://kimjw04.github.io/class2024/json/gineungsasilgi2024-2.json")
+                .then(res => res.json())
+                .then(items => {
+                    // 가져온 데이터를 가공하여 quizInfo 배열에 저장
+                    quizInfo = items.map((item) => {
+                        const formattedQuiz = {
+                            date: item.time,
+                            Question: item.question,
+                            Answer: item.correct_answer,
+                            Desc: item.desc,
+                        };
+
+                        // 보기 가져오기 (오답 + 정답)
+                        const Choices = [...item.incorrect_answers, item.correct_answer];
+
+                        // 보기 랜덤 섞기
+                        for (let i = Choices.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [Choices[i], Choices[j]] = [Choices[j], Choices[i]];
+                        }
+
+                        // 섞은 보기를 formattedQuiz 객체에 추가
+                        formattedQuiz.Choices = Choices;
+
+                        return formattedQuiz;
+                    });
+
+                    // 문제 출력 함수 호출
+                    updateQuiz();
+                });
+        };
+
+        // 결과 출력
+        const quizend = () => {
+            quizArray.push(`<div class="totalResults">   
+                <h2>결과 확인</h2>
+                <div class="result">맞힌 갯수 : ${userAnswernum} / ${quizinfo.length} </br>틀린 갯수 : ${quizinfo.length - userAnswernum}</div>
+            </div>
+            `)
+            quizinfo.forEach((quiz, index) => {
+                if (resultAnswer[index] == quizinfo[index].answer) {
+                    quizArray.push(`
+                    <div class="quizsresult good">
+                        <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
+                        <div class="quiz__main">
+                            <div class="question">${index + 1}. ${quizinfo[index].question}</div>
+                            <div class="Re">입력한 답 : ${resultAnswer[index]}</div>
+                            <div class="answer">${quizinfo[index].answer}</div>
+                            <div class="desc">${quizinfo[index].desc}</div>
+                        </div>
+                    </div>
+                    `);
+                } else {
+                    quizArray.push(`
+                    <div class="quizsresult bad">
+                        <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
+                        <div class="quiz__main">
+                            <div class="question">${index + 1}. ${quizinfo[index].question}</div>
+                            <div class="Re">입력한 답 : ${resultAnswer[index]}</div>
+                            <div class="answer">${quizinfo[index].answer}</div>
+                            <div class="desc">${quizinfo[index].desc}</div>
+                        </div>
+                    </div>
+                    `);
+                }
+            });
+            quizWrap.innerHTML = quizArray.join('');
+        }
+
+        // 문제 출력
+        const updateQuiz = (index) => {
+            let quizWrapTag = `
+                <div class="quiz">
+                    <div class="quiz__header">${quizinfo[index].date}</br>${index + 1} / ${quizinfo.length}</div>
+                    <div class="quiz__main">
+                        <div class="question">${index + 1}. ${quizinfo[index].question}</div>
+                        <div class="input">
+                        <input type="text" placeholder="정답을 입력해주세요!">
+                        </div>
+                        <div class="answer none">${quizinfo[index].answer}</div>
+                        <div class="desc none">${quizinfo[index].desc}</div>
+                    </div>
+                    <div class="quiz__footer">
+                        <button class="confirm ">정답 확인하기</button>
+                        <button class="next none">다음 문제</button>
+                    </div>
+                </div>
+            `;
+            quizWrap.innerHTML = quizWrapTag;
+
+            // 선택자
+            const quizConfirm = quizWrap.querySelector(".confirm");
+            const quiznext = quizWrap.querySelector(".next");
+            const trueAnswer = quizWrap.querySelector(".answer");
+            const quizInput = quizWrap.querySelector(".input");
+            const quizDesc = quizWrap.querySelector(".desc");
+            const answerElement = quizWrap.querySelector(".answer");
+            const quizElement = quizWrap.querySelector(".quiz");
+
+
+            // 정답 버튼 클릭
+            quizConfirm.addEventListener("click", () => {
+                const userInput = quizWrap.querySelector("input").value;
+                if (userInput) {
+                    const quizAnswer = quizinfo[currentIndex].answer;       // 정답지의 정답
+                    resultAnswer[index] = userInput;                        // 사용자 정답 저장
+                    console.log(resultAnswer);
+                    if (userInput == quizAnswer) {
+                        quizElement.classList.add("good");
+                        userAnswernum += 1;
+                    } else {
+                        quizElement.classList.add("bad");
+                        trueAnswer.classList.remove("none");
+                    }
+                    quizDesc.classList.remove("none");
+                    quizInput.classList.add("none");
+                    quiznext.classList.remove("none");
+                    quizConfirm.classList.add("none");
+                } else {
+                    alert("답을 입력해주세요!");
+                }
+            })
+
+            // 다음 문제 버튼을 클릭하면 alert()
+            quiznext.addEventListener("click", () => {
+                if (currentIndex < quizinfo.length - 1) {
+                    currentIndex++;
+                    updateQuiz(currentIndex);
+                    quizDesc.classList.add("none");
+                    quiznext.classList.add("none");
+                    quizConfirm.classList.remove("none");
+                    quizElement.classList.remove("bad");
+                    quizElement.classList.remove("good");
+                } else {
+                    alert("퀴즈가 종료됐습니다");
+                    quizend();
+                    userAnswernum++;
+                    currentIndex = 0;
+                    quizElement.classList.add("none");
+                }
+            })
+        }
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            updateQuiz(currentIndex);
+        });
+    </script>
+</body>
+
+</html>

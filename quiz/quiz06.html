@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <!-- 헤더 섹션 -->
     <header id="header">
         <h1>
             <a href="index.html">Quiz</a>
@@ -27,27 +28,35 @@
     </header>
     <!-- //header -->
 
+    <!-- 메인 섹션 -->
     <main id="main">
-        <div class="quiz__wrap"></div>
+        <div class="quiz__wrap"></div> <!-- 퀴즈를 표시할 영역 -->
+        <div class="quiz__check">정답 제출</div> <!-- 정답 확인 버튼 -->
     </main>
     <!-- //main -->
 
+    <!-- 푸터 섹션 -->
     <footer id="footer">
         <a href="mailto:kjw040416@gmail.com">kjw040416@gmail.com</a>
     </footer>
     <!-- //footer -->
+
+    <!-- JavaScript 코드 -->
     <script>
         // 선택자
-        const quizWrap = document.querySelector(".quiz__wrap");
+        const quizWrap = document.querySelector(".quiz__wrap"); // 퀴즈를 표시할 요소 선택
+        const quizCheck = document.querySelector(".quiz__check"); // 정답 제출 버튼 선택
 
-        // 문제 정보
-        let quizInfo = []
+        // 문제 정보 배열
+        let quizInfo = [];
 
         // 문제 가져오기
         const fetchQuiz = () => {
+            // 외부 JSON 파일에서 퀴즈 데이터 가져오기
             fetch("https://kimjw04.github.io/class2024/json/gineungsaJC2005_02.json")
                 .then(res => res.json())
                 .then(items => {
+                    // 가져온 데이터를 가공하여 quizInfo 배열에 저장
                     quizInfo = items.map((item) => {
                         const formattedQuiz = {
                             Date: "2005년 2회",
@@ -55,8 +64,9 @@
                             Question: item.question,
                             Answer: item.correct_answer,
                             Desc: item.desc,
-                        }
-                        // 보기 가져오기
+                        };
+
+                        // 보기 가져오기 (오답 + 정답)
                         const Choices = [...item.incorrect_answers, item.correct_answer];
 
                         // 보기 랜덤 섞기
@@ -65,64 +75,94 @@
                             [Choices[i], Choices[j]] = [Choices[j], Choices[i]];
                         }
 
-                        // 보기 추가하기
+                        // 섞은 보기를 formattedQuiz 객체에 추가
                         formattedQuiz.Choices = Choices;
 
-                        // 결과값 출력
                         return formattedQuiz;
-                    })
+                    });
 
-                    // 문제 출력
+                    // 문제 출력 함수 호출
                     updateQuiz();
-                })
-        }
+                });
+        };
 
-        // 문제 출력하기
+        // 문제 출력 함수
         const updateQuiz = () => {
             const quizArray = [];
 
+            // quizInfo 배열을 순회하면서 HTML 코드 생성
             quizInfo.forEach((quiz, index) => {
                 quizArray.push(`
                     <div class="quiz">
-                    <div class="quiz__header">${quiz.Date} ${quiz.type}</div>
-                    <div class="quiz__main">
-                        <div class="question">${index + 1}. ${quiz.Question}</div>
-                        <div class="choices">
-                            <label for="choice${index}-1">
-                                <input type="radio" id="choice${index}-1" name="choice-${index}" value="1">
-                                <span>${quiz.Choices[0]}</span>
-                            </label>
-                            <label for="choice${index}-2">
-                                <input type="radio" id="choice${index}-2" name="choice-${index}" value="2">
-                                <span>${quiz.Choices[1]}</span>
-                            </label>
-                            <label for="choice${index}-3">
-                                <input type="radio" id="choice${index}-3" name="choice-${index}" value="3">
-                                <span>${quiz.Choices[2]}</span>
-                            </label>
-                            <label for="choice${index}-4">
-                                <input type="radio" id="choice${index}-4" name="choice-${index}" value="4">
-                                <span>${quiz.Choices[3]}</span>
-                            </label>
+                        <div class="quiz__header">${quiz.Date} ${quiz.type}</div>
+                        <div class="quiz__main">
+                            <div class="question">${index + 1}. ${quiz.Question}</div>
+                            <div class="choices">
+                                <!-- 각 선택지 라벨 및 라디오 버튼 생성 -->
+                                <label for="choice${index}-1">
+                                    <input type="radio" id="choice${index}-1" name="choice-${index}" value="${quiz.Choices[0]}">
+                                    <span>${quiz.Choices[0]}</span>
+                                </label>
+                                <label for="choice${index}-2">
+                                    <input type="radio" id="choice${index}-2" name="choice-${index}" value="${quiz.Choices[1]}">
+                                    <span>${quiz.Choices[1]}</span>
+                                </label>
+                                <label for="choice${index}-3">
+                                    <input type="radio" id="choice${index}-3" name="choice-${index}" value="${quiz.Choices[2]}">
+                                    <span>${quiz.Choices[2]}</span>
+                                </label>
+                                <label for="choice${index}-4">
+                                    <input type="radio" id="choice${index}-4" name="choice-${index}" value="${quiz.Choices[3]}">
+                                    <span>${quiz.Choices[3]}</span>
+                                </label>
+                            </div>
+                            <div class="answer none">${quiz.Answer}</div> <!-- 정답 숨겨진 요소 -->
+                            <div class="desc none">${quiz.Desc}</div> <!-- 해설 숨겨진 요소 -->
                         </div>
-                        <div class="answer none">정답: ${quiz.Answer}</div>
-                        <div class="desc none">${quiz.Desc}</div>
-                    </div>
-                    <div class="quiz__footer">
-                        <button class="confirm">정답 확인하기</button>
-                        <button class="next none">다음 문제</button>
-                    </div>
                     </div>
                 `);
             });
 
-            // quizArray 배열에 저장된 HTML 코드를 quizWrap 요소의 innerHTML로 설정하여 화면에 출력합니다.
+            // quizArray 배열에 저장된 HTML 코드를 quizWrap 요소의 innerHTML로 설정하여 화면에 출력
             quizWrap.innerHTML = quizArray.join("");
-        }
-        // 페이지가 로드된 후 실행
+        };
+
+        // 정답 확인 버튼 클릭 시 이벤트 처리
+        quizCheck.addEventListener("click", () => {
+            const quizElements = document.querySelectorAll(".quiz");
+            let correctCount = 0; // 맞은 문제 수 초기화
+
+            // 각 문제 요소를 순회하면서 정답 확인
+            quizElements.forEach((quizElement, index) => {
+                const quizChecked = quizElement.querySelector(`input[name="choice-${index}"]:checked`); // 선택한 정답
+                const quizAnswer = quizElement.querySelector(".answer"); // 정답 요소
+                const quizDesc = quizElement.querySelector(".desc"); // 해설 요소
+
+                if (quizChecked) {
+                    const userAnswer = quizChecked.value; // 사용자가 선택한 정답
+                    const correctAnswer = quizAnswer.textContent; // 정답
+
+                    if (userAnswer === correctAnswer) {
+                        quizElement.classList.add("good"); // 정답 맞은 경우 클래스 추가
+                        correctCount++; // 맞은 문제 수 증가
+                    } else {
+                        quizElement.classList.add("bad"); // 오답인 경우 클래스 추가
+                        quizAnswer.classList.remove("none"); // 정답 요소 표시
+                    }
+                    quizDesc.classList.remove("none"); // 해설 요소 표시
+                }
+            });
+
+            // 점수 계산 및 소수점 두 자리까지 표시
+            const totalScore = ((correctCount / quizElements.length) * 100).toFixed(2);
+            // 결과 알림창 표시
+            alert(`당신의 점수는 ${totalScore}점입니다. 맞은 문제 수: ${correctCount}/${quizElements.length}`);
+        });
+
+        // 페이지가 로드되면 fetchQuiz 함수 호출하여 문제 가져오기
         document.addEventListener("DOMContentLoaded", () => {
             fetchQuiz();
-        })
+        });
     </script>
 </body>
 
