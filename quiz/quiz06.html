@@ -51,9 +51,9 @@
         let quizInfo = [];
 
         // 문제 가져오기
-        const fetchQuiz = () => {
+        const fetchQuiz = async () => {
             // 외부 JSON 파일에서 퀴즈 데이터 가져오기
-            fetch("https://kimjw04.github.io/class2024/json/gineungsaJC2005_02.json")
+            await fetch("https://kimjw04.github.io/class2024/json/gineungsaJC2005_02.json")
                 .then(res => res.json())
                 .then(items => {
                     // 가져온 데이터를 가공하여 quizInfo 배열에 저장
