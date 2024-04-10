@@ -71,7 +71,7 @@
                             return null;
                         }
                     }).filter(item => item !== null); // null이 아닌 요소만 필터링
-                    
+
                     console.log(quizinfo);
 
                     // 문제 출력 함수 호출
@@ -93,7 +93,6 @@
                         <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
                         <div class="quiz__main">
                             <div class="question">${index + 1}. ${quizinfo[index].question}</div>
-                            <div class="desc">${quizinfo[index].desc}</div>
                             <div class="Re">입력한 답 : ${resultAnswer[index]}</div>
                             <div class="answer">${quizinfo[index].answer}</div>
                         </div>
@@ -105,7 +104,6 @@
                         <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
                         <div class="quiz__main">
                             <div class="question">${index + 1}. ${quizinfo[index].question}</div>
-                            <div class="desc">${quizinfo[index].desc}</div>
                             <div class="Re">입력한 답 : ${resultAnswer[index]}</div>
                             <div class="answer">${quizinfo[index].answer}</div>
                         </div>
@@ -146,8 +144,8 @@
 
             // 정답 버튼 클릭
             quizConfirm.addEventListener("click", () => {
-                const userInput = quizWrap.querySelector(".input");
-                if (userInput != null) {
+                const userInput = quizWrap.querySelector("input").value;
+                if (userInput !== '') {
                     const quizAnswer = quizinfo[index].answer;       // 정답지의 정답
                     resultAnswer[index] = userInput;                        // 사용자 정답 저장
                     console.log(resultAnswer);
