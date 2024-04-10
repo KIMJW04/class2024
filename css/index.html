@@ -15,13 +15,13 @@
             width: 100%;
             height: 100vh;
             overflow: hidden;
-            background: linear-gradient(to bottom, rgba(1, 141, 210, 0.63), transparent);
+            background: linear-gradient(to bottom, rgb(16, 172, 81), transparent);
         }
 
         div[class^="bubble-"] {
             width: 1px;
             height: 1px;
-            background-color: rgba(1, 141, 210, 0.3);
+            background-color: rgba(16, 172, 81, 0.342);
             border-radius: 50%;
             position: absolute;
             bottom: 6px;
@@ -260,13 +260,49 @@
         .jelly-hair {
             width: 100px;
             height: 75px;
-            background: linear-gradient(to bottom, #ef891a 0%, #ef891a 2%, #ebf28a 100%);
+            background: linear-gradient(to bottom, #DB4297 2%, #DD449A 100%);
             position: absolute;
             left: 30%;
-            top: -10px;
+            top: -24px;
             z-index: -2;
             border-radius: 25px;
             animation: hair-movement 10s infinite linear;
+        }
+
+        .jelly-hair .hair-eye{
+            position: absolute;
+            top: -40px;
+        }
+        .jelly-hair .hair-eye::before{
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 50px;
+            width: 20px;
+            height: 20px;
+            background-color: #000000;
+            border-radius: 30%;
+        }
+
+        .jelly-hair .hair-motuh {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            background-color: #F055AB;
+            border-radius: 30px;
+            transform: translate(-50%);
+        }
+
+        .jelly-hair .hair-mouth::before {
+            content: '';
+            position: absolute;
+            left: 40%;
+            top: 50%;
+            width: 30%;
+            height: 30%;
+            border-radius: 30%;
+            background-color: #F055AB;
+            transform: translateX(-50%);
         }
 
         @keyframes hair-movement {
@@ -306,7 +342,7 @@
         .jelly-body {
             width: 100%;
             height: 250px;
-            background: linear-gradient(to bottom, #009dd2, #ebf28a);
+            background: linear-gradient(to bottom, #EDABFF, #9855CB);
             border-top-left-radius: 70px;
             border-top-right-radius: 90px;
             animation: body-movement 10s infinite linear;
@@ -411,7 +447,7 @@
             left: 60px;
             width: 20px;
             height: 20px;
-            background-color: #ce17af;
+            background-color: #000000;
             border-radius: 30%;
         }
 
@@ -421,15 +457,15 @@
             left: -60px;
             width: 20px;
             height: 20px;
-            background-color: #ce17af;
+            background-color: #000000;
             border-radius: 30%;
         }
 
         .jelly-mouth {
             position: absolute;
-            width: 200px;
+            width: 100px;
             height: 80px;
-            background-color: #ebf4cf;
+            background-color: #CE8AEB;
             border-radius: 30px;
             transform: translate(-50%);
         }
@@ -438,10 +474,11 @@
             content: '';
             position: absolute;
             left: 50%;
-            top: 50%;
-            width: 60%;
-            height: 5px;
-            background-color: #ff9393;
+            top: 40%;
+            width: 30%;
+            height: 30%;
+            border-radius: 30%;
+            background-color: #511772;
             transform: translateX(-50%);
         }
 
@@ -454,7 +491,7 @@
             content: '';
             width: 45px;
             height: 50px;
-            box-shadow: 0 5px 6px #3b949b;
+            box-shadow: 0 5px 6px #881888d3;
             position: absolute;
             left: 105px;
             border-radius: 0 0 50% 50%;
@@ -464,7 +501,7 @@
             content: '';
             width: 45px;
             height: 50px;
-            box-shadow: 0 5px 6px #3b949b;
+            box-shadow: 0 5px 6px #881888d3;
             position: absolute;
             left: -150px;
             border-radius: 0 0 50% 50%;
@@ -473,7 +510,7 @@
         .jelly-tentacle1 {
             width: 50px;
             height: 50px;
-            background-color: #ebf28a;
+            background-color: #9855CB;
             border-radius: 0 0 50% 50%;
             position: absolute;
             left: 0;
@@ -484,7 +521,7 @@
         .jelly-tentacle2 {
             width: 50px;
             height: 50px;
-            background-color: #ebf28a;
+            background-color: #9855CB;
             border-radius: 0 0 50% 50%;
             position: absolute;
             left: 20%;
@@ -495,7 +532,7 @@
         .jelly-tentacle3 {
             width: 50px;
             height: 50px;
-            background-color: #ebf28a;
+            background-color: #9855CB;
             border-radius: 0 0 50% 50%;
             position: absolute;
             left: 40%;
@@ -506,7 +543,7 @@
         .jelly-tentacle4 {
             width: 50px;
             height: 50px;
-            background-color: #ebf28a;
+            background-color: #9855CB;
             border-radius: 0 0 50% 50%;
             position: absolute;
             left: 60%;
@@ -517,7 +554,7 @@
         .jelly-tentacle5 {
             width: 50px;
             height: 50px;
-            background-color: #ebf28a;
+            background-color: #9855CB;
             border-radius: 0 0 50% 50%;
             position: absolute;
             left: 80%;
@@ -554,7 +591,10 @@
         <div class="bubble-9"></div>
         <div class="bubble-10"></div>
         <div class="jelly-wrapper">
-            <div class="jelly-hair"></div>
+            <div class="jelly-hair">
+                <div class="hair-eye"></div>
+                <div class="hair-mouth"></div>
+            </div>
             <div class="jelly-body">
                 <div class="jelly-inner">
                     <div class="jelly-eye"></div>
