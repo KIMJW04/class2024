@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C-quiz01</title>
-    <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="stylesheet" href="assets/css/C-quiz.css">
 </head>
 
 <body>
@@ -43,15 +43,7 @@
         const quizWrap = document.querySelector(".quiz__wrap");
 
         // 문제 정보
-        const quizinfo = [
-            {
-                date: "2019년",
-                question: "웹 페이지에서 사용자가 입력한 데이터를 서버로 전송하는 방법으로 올바른 것은?",
-                choices: ["POST 메서드", "GET 메서드", "DELETE 메서드", "PUT 메서드"],
-                answer: 1,
-                desc: "웹 페이지에서 사용자가 입력한 데이터를 서버로 전송할 때는 POST 메서드를 사용합니다."
-            },
-        ]
+        let quizinfo = [];
 
         // 변수
         let currentIndex = 0;
@@ -65,32 +57,25 @@
             await fetch("https://kimjw04.github.io/class2024/json/gineungsasilgi2024-2.json")
                 .then(res => res.json())
                 .then(items => {
-                    // 가져온 데이터를 가공하여 quizInfo 배열에 저장
-                    quizInfo = items.map((item) => {
-                        const formattedQuiz = {
-                            date: item.time,
-                            Question: item.question,
-                            Answer: item.correct_answer,
-                            Desc: item.desc,
-                        };
-
-                        // 보기 가져오기 (오답 + 정답)
-                        const Choices = [...item.incorrect_answers, item.correct_answer];
-
-                        // 보기 랜덤 섞기
-                        for (let i = Choices.length - 1; i > 0; i--) {
-                            const j = Math.floor(Math.random() * (i + 1));
-                            [Choices[i], Choices[j]] = [Choices[j], Choices[i]];
+                    // 가져온 데이터를 가공하여 quizinfo 배열에 저장
+                    quizinfo = items.map((item, idx) => {
+                        if (item.question_desc == null) {
+                            const formattedQuiz = {
+                                date: item.time,
+                                question: item.question,
+                                answer: item.correct_answer,
+                            };
+                            return formattedQuiz;
+                        } else {
+                            // 조건에 맞지 않는 경우 처리 (예: null 반환)
+                            return null;
                         }
-
-                        // 섞은 보기를 formattedQuiz 객체에 추가
-                        formattedQuiz.Choices = Choices;
-
-                        return formattedQuiz;
-                    });
+                    }).filter(item => item !== null); // null이 아닌 요소만 필터링
+                    
+                    console.log(quizinfo);
 
                     // 문제 출력 함수 호출
-                    updateQuiz();
+                    updateQuiz(currentIndex);
                 });
         };
 
@@ -108,9 +93,9 @@
                         <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
                         <div class="quiz__main">
                             <div class="question">${index + 1}. ${quizinfo[index].question}</div>
+                            <div class="desc">${quizinfo[index].desc}</div>
                             <div class="Re">입력한 답 : ${resultAnswer[index]}</div>
                             <div class="answer">${quizinfo[index].answer}</div>
-                            <div class="desc">${quizinfo[index].desc}</div>
                         </div>
                     </div>
                     `);
@@ -120,9 +105,9 @@
                         <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>
                         <div class="quiz__main">
                             <div class="question">${index + 1}. ${quizinfo[index].question}</div>
+                            <div class="desc">${quizinfo[index].desc}</div>
                             <div class="Re">입력한 답 : ${resultAnswer[index]}</div>
                             <div class="answer">${quizinfo[index].answer}</div>
-                            <div class="desc">${quizinfo[index].desc}</div>
                         </div>
                     </div>
                     `);
@@ -142,7 +127,6 @@
                         <input type="text" placeholder="정답을 입력해주세요!">
                         </div>
                         <div class="answer none">${quizinfo[index].answer}</div>
-                        <div class="desc none">${quizinfo[index].desc}</div>
                     </div>
                     <div class="quiz__footer">
                         <button class="confirm ">정답 확인하기</button>
@@ -155,18 +139,16 @@
             // 선택자
             const quizConfirm = quizWrap.querySelector(".confirm");
             const quiznext = quizWrap.querySelector(".next");
-            const trueAnswer = quizWrap.querySelector(".answer");
             const quizInput = quizWrap.querySelector(".input");
-            const quizDesc = quizWrap.querySelector(".desc");
             const answerElement = quizWrap.querySelector(".answer");
             const quizElement = quizWrap.querySelector(".quiz");
 
 
             // 정답 버튼 클릭
             quizConfirm.addEventListener("click", () => {
-                const userInput = quizWrap.querySelector("input").value;
-                if (userInput) {
-                    const quizAnswer = quizinfo[currentIndex].answer;       // 정답지의 정답
+                const userInput = quizWrap.querySelector(".input");
+                if (userInput != null) {
+                    const quizAnswer = quizinfo[index].answer;       // 정답지의 정답
                     resultAnswer[index] = userInput;                        // 사용자 정답 저장
                     console.log(resultAnswer);
                     if (userInput == quizAnswer) {
@@ -174,9 +156,8 @@
                         userAnswernum += 1;
                     } else {
                         quizElement.classList.add("bad");
-                        trueAnswer.classList.remove("none");
+                        answerElement.classList.remove("none");
                     }
-                    quizDesc.classList.remove("none");
                     quizInput.classList.add("none");
                     quiznext.classList.remove("none");
                     quizConfirm.classList.add("none");
@@ -190,7 +171,6 @@
                 if (currentIndex < quizinfo.length - 1) {
                     currentIndex++;
                     updateQuiz(currentIndex);
-                    quizDesc.classList.add("none");
                     quiznext.classList.add("none");
                     quizConfirm.classList.remove("none");
                     quizElement.classList.remove("bad");
@@ -207,7 +187,7 @@
 
         // 페이지가 로드된 후 실행
         document.addEventListener("DOMContentLoaded", () => {
-            updateQuiz(currentIndex);
+            fetchQuiz();
         });
     </script>
 </body>
