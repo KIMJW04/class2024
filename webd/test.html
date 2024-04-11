@@ -103,14 +103,16 @@
             margin-top: 30px;
         }
 
+        .nav>ul>li {}
+
         .nav>ul>li>a {
-            padding: 10px 50px;
-            background-color: #b0b0b0;
             display: inline-block;
+            padding: 10px 50px;
+            background-color: #ddd;
         }
 
         .nav>ul>li>a:hover {
-            background-color: #a1a1a1;
+            background-color: #d2d2d2;
         }
 
         .nav>ul>li>ul {
@@ -119,24 +121,15 @@
         }
 
         .nav>ul>li>ul>li>a {
-            background-color: #c1c1c1;
-            width: 100%;
-            padding: 10px;
             display: inline-block;
             box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            background-color: #d9d9d9;
         }
 
         .nav>ul>li>ul>li>a:hover {
-            background-color: #888888;
-        }
-
-        /* javascript css */
-        .nav>ul>li>ul {
-            display: block;
-            height: 0px;
-            /* height: 158px; */
-            overflow: hidden;
-            transition: all 600ms;
+            background-color: #d4d4d4;
         }
     </style>
 </head>
@@ -204,30 +197,14 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        // $(function () {
-        //     // 선택자
-        //     $(".nav > ul > li ").mouseover(function () {
-        //         $(this).find(".submenu").stpo().slideDown();
-        //     });
-        //     $(".nav > ul > li ").mouseout(function () {
-        //         $(this).find(".submenu").stop().slideUp();
-        //     });
-        // });
-    </script>
-
-    <script>
-        window.onload = function () {
-            const navList = document.querySelectorAll(".nav > ul > li");
-
-            navList.forEach(function (navItem) {
-                navItem.addEventListener("mouseover", function () {
-                    this.querySelector(".submenu").style.height = "158px";
-                })
-                navItem.addEventListener("mouseout", function () {
-                    this.querySelector(".submenu").style.height = "0px";
-                })
+        $(function () {
+            $(".nav > ul > li").mouseover(function () {
+                $(this).find(".submenu").stop().slideDown(600);
             })
-        }
+            $(".nav > ul > li").mouseout(function () {
+                $(this).find(".submenu").stop().slideUp(400);
+            })
+        })
     </script>
 </body>
 
