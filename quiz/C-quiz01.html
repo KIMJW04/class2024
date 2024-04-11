@@ -72,17 +72,36 @@
 
                 // 가져온 데이터를 가공하여 quizinfo 배열에 저장
                 quizinfo = items.map((item, idx) => {
-                    const formattedQuiz = {
-                        date: item.time,
-                        question: removeSpecialCharacters(item.question),
-                        answer: removeSpecialCharacters(item.correct_answer),
-                        Desc: removeSpecialCharacters(item.question_desc),
-                    };
-                    return formattedQuiz;
-                }).filter((quiz, idx) => {
-                    // quizinfo 배열의 길이가 100 미만인 요소만 필터링
-                    return idx < 100;
-                });
+                    // item.correct_answer에 특수 문자가 포함되어 있는지 확인하는 정규 표현식
+                    const hasSpecialCharacters = /[~`!#$%\^&*+=\-\[\]\\';,/{}()|\\":<>\?]/.test(item.correct_answer);
+
+                    if (item.question_desc == null && !hasSpecialCharacters) {
+                        const formattedQuiz = {
+                            date: item.time,
+                            question: item.question,
+                            answer: item.correct_answer,
+                            // question: removeSpecialCharacters(item.question),
+                            // answer: removeSpecialCharacters(item.correct_answer),
+                        };
+                        return formattedQuiz;
+                    } else {
+                        // 조건에 맞지 않는 경우 처리 (예: null 반환)
+                        return null;
+                    }
+                }).filter(item => item !== null); // null이 아닌 요소만 필터링
+                // // 가져온 데이터를 가공하여 quizinfo 배열에 저장
+                // quizinfo = items.map((item, idx) => {
+                //     const formattedQuiz = {
+                //         date: item.time,
+                //         question: removeSpecialCharacters(item.question),
+                //         answer: removeSpecialCharacters(item.correct_answer),
+                //         Desc: removeSpecialCharacters(item.question_desc),
+                //     };
+                //     return formattedQuiz;
+                // }).filter((quiz, idx) => {
+                //     // quizinfo 배열의 길이가 100 미만인 요소만 필터링
+                //     return idx < 100;
+                // });
 
                 console.log(quizinfo);
 
@@ -102,7 +121,7 @@
             </div>
             `)
             quizinfo.forEach((quiz, index) => {
-                if (resultAnswer[index] == quizinfo[index].answer) {
+                if (resultAnswer[index].toLowerCase() == quizinfo[index].answer.toLowerCase()) {
                     quizArray.push(`
                     <div class="quizsresult good">
                         <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type}</div>

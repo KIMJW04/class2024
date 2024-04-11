@@ -183,7 +183,7 @@
         const updateQuiz = (index) => {
             let quizWrapTag = `
                 <div class="quiz">
-                    <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type} </br>${index} / ${quizinfo.length}</div>
+                    <div class="quiz__header">${quizinfo[index].date} ${quizinfo[index].type} </br>${index + 1} / ${quizinfo.length}</div>
                     <div class="quiz__main">
                         <div class="question">${index + 1}. ${quizinfo[index].question}</div>
                         <div class="choices ">
