@@ -79,6 +79,9 @@
                         Desc: removeSpecialCharacters(item.question_desc),
                     };
                     return formattedQuiz;
+                }).filter((quiz, idx) => {
+                    // quizinfo 배열의 길이가 100 미만인 요소만 필터링
+                    return idx < 100;
                 });
 
                 console.log(quizinfo);
