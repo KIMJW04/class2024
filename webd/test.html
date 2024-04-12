@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>menuM-1</title>
+    <title>do</title>
     <style>
         * {
-            margin: 0;
             padding: 0;
+            margin: 0;
         }
 
         li {
@@ -21,188 +21,240 @@
         }
 
         #wrap {
-            width: 1200px;
-            height: 700px;
-            /* 블록구조 가운데 정렬 */
+            width: 100%;
+            height: 100%;
             margin: 0 auto;
         }
 
         #header {
-            width: 1200px;
+            width: 100%;
+            height: 100px;
+            position: relative;
+        }
+
+        #header::before {
+            content: '';
+            width: 100%;
+            height: 0;
+            background-color: #bbb6b6;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            transition: all 300ms;
+            z-index: -10;
+        }
+
+        #header.on::before {
+            height: 170px;
+        }
+
+        #header .container {
             display: flex;
         }
 
         #header .logo {
             width: 20%;
+            height: 100%;
+            background-color: #eee;
+        }
+
+        #header .nav {
+            width: 80%;
+            height: 100%;
+            background-color: #ccc;
+        }
+
+        #header .container .nav>ul {
+            display: flex;
+            justify-content: right;
+        }
+
+        #header .container .nav>ul>li>a {
+            padding: 10px 60px;
+            margin-top: 58px;
+            display: inline-block;
+            background-color: #bbb6b6;
+        }
+
+        #header .container .nav>ul>li>a:hover {
+            background-color: #e2e2e2;
+        }
+
+        #header .container .nav>ul>li>ul {
+            text-align: center;
+            display: none;
+        }
+
+        #header .container .nav>ul>li>ul>li>a {
+            width: 100%;
+            padding: 10px;
+            display: inline-block;
+            box-sizing: border-box;
+            background-color: #bbb6b6;
+        }
+
+        #header .container .nav>ul>li>li>a:hover {
+            background-color: #e2e2e2;
+        }
+
+        #section {
+            width: 100%;
+            height: 350px;
+            background-color: #eee;
+            display: flex;
+            position: relative;
+            z-index: -100;
+            justify-content: center;
+        }
+
+        #section .link {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 1340px;
             height: 100px;
-            background-color: #ACE2E1;
+            background-color: #ddd;
         }
 
         #slider {
-            width: 1200px;
-            height: 300px;
-            background-color: #9dd0cf;
+            width: 100%;
+            height: 500px;
         }
 
-        #content {
-            width: 1200px;
-            display: flex;
+        #slider .img {
+            width: 100%;
+            height: 40%;
+            background-color: #eee;
         }
 
-        #content .content1 {
-            width: 33.3333%;
-            height: 200px;
-            background-color: #97c9c8;
-        }
-
-        #content .content2 {
-            width: 33.3333%;
-            height: 200px;
-            background-color: #8bb7b6;
-        }
-
-        #content .content3 {
-            width: 33.3333%;
-            height: 200px;
-            background-color: #6e9998;
+        #slider .banner {
+            width: 100%;
+            height: 60%;
+            background-color: #ddd;
         }
 
         #footer {
-            width: 1200px;
+            width: 100%;
+            height: 120px;
+        }
+
+        #footer .container {
             display: flex;
         }
 
         #footer .footer1 {
             width: 20%;
-            height: 100px;
-            background-color: #8fb8b8;
+            height: 100%;
+            background-color: #857e7e;
         }
 
         #footer .footer2 {
-            width: 60%;
-            height: 100px;
-            background-color: #7d9a99;
-        }
-
-        #footer .footer3 {
-            width: 20%;
-            height: 100px;
-            background-color: #8fc3c2;
-        }
-
-        /* nav */
-        .nav {
             width: 80%;
-            height: 100px;
-            background-color: #a8dddc;
+            height: 100%;
         }
 
-        .nav>ul {
-            display: flex;
-            justify-content: right;
-            margin-top: 30px;
-        }
-
-        .nav>ul>li {}
-
-        .nav>ul>li>a {
-            display: inline-block;
-            padding: 10px 50px;
-            background-color: #ddd;
-        }
-
-        .nav>ul>li>a:hover {
-            background-color: #d2d2d2;
-        }
-
-        .nav>ul>li>ul {
-            text-align: center;
-            display: none;
-        }
-
-        .nav>ul>li>ul>li>a {
-            display: inline-block;
-            box-sizing: border-box;
+        #footer .footer2 .footer2-1 {
             width: 100%;
-            padding: 10px;
-            background-color: #d9d9d9;
+            height: 50%;
+            background-color: #c79b9b;
         }
 
-        .nav>ul>li>ul>li>a:hover {
-            background-color: #d4d4d4;
+        #footer .footer2 .footer2-2 {
+            width: 100%;
+            height: 50%;
+            background-color: #ccc;
+        }
+
+        .container {
+            width: 1340px;
+            height: inherit;
+            margin: 0 auto;
+            background-color: #ddd;
         }
     </style>
 </head>
 
 <body>
     <div id="wrap">
-        <div id="header">
-            <div class="logo"></div>
-            <div class="nav">
-                <ul>
-                    <li><a href="#">메뉴1</a>
-                        <ul class="submenu">
-                            <li><a href="#">서브 메뉴1-1</a></li>
-                            <li><a href="#">서브 메뉴1-2</a></li>
-                            <li><a href="#">서브 메뉴1-3</a></li>
-                            <li><a href="#">서브 메뉴1-4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">메뉴2</a>
-                        <ul class="submenu">
-                            <li><a href="#">서브 메뉴2-1</a></li>
-                            <li><a href="#">서브 메뉴2-2</a></li>
-                            <li><a href="#">서브 메뉴2-3</a></li>
-                            <li><a href="#">서브 메뉴2-4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">메뉴3</a>
-                        <ul class="submenu">
-                            <li><a href="#">서브 메뉴3-1</a></li>
-                            <li><a href="#">서브 메뉴3-2</a></li>
-                            <li><a href="#">서브 메뉴3-3</a></li>
-                            <li><a href="#">서브 메뉴3-4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">메뉴4</a>
-                        <ul class="submenu">
-                            <li><a href="#">서브 메뉴4-1</a></li>
-                            <li><a href="#">서브 메뉴4-2</a></li>
-                            <li><a href="#">서브 메뉴4-3</a></li>
-                            <li><a href="#">서브 메뉴4-4</a></li>
-                        </ul>
-                    </li>
-                </ul>
+        <header id="header">
+            <div class="container">
+                <div class="logo">
+                    <h1></h1>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><a href="#">조회</a>
+                            <ul>
+                                <li><a href="#">계좌조회</a></li>
+                                <li><a href="#">거래내역조회</a></li>
+                                <li><a href="#">휴면계좌 조회</a></li>
+                                <li><a href="#">수표/어음 조회</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">이체</a>
+                            <ul>
+                                <li><a href="#">계좌이체</a></li>
+                                <li><a href="#">다계좌이체</a></li>
+                                <li><a href="#">자동이체</a></li>
+                                <li><a href="#">예약이체</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">공과금</a>
+                            <ul>
+                                <li><a href="#">지로/생활요금</a></li>
+                                <li><a href="#">지방세</a></li>
+                                <li><a href="#">국세/관세</a></li>
+                                <li><a href="#">벌칙금/벌과금</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">외환</a>
+                            <ul>
+                                <li><a href="#">금리</a></li>
+                                <li><a href="#">환율/외환예금</a></li>
+                                <li><a href="#">글로벌뱅킹</a></li>
+                                <li><a href="#">외화송금</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </header>
         <!-- //header -->
 
-        <div id="slider">
-        </div>
-        <!-- //slider -->
+        <section id="section">
+            <div class="link"></div>
+        </section>
+        <!-- //section -->
 
-        <div id="content">
-            <div class="content1"></div>
-            <div class="content2"></div>
-            <div class="content3"></div>
-        </div>
-        <!-- //content -->
+        <main id="slider">
+            <div class="container">
+                <div class="img"></div>
+                <div class="banner"></div>
+            </div>
+        </main>
+        <!-- //main -->
 
-        <div id="footer">
-            <div class="footer1"></div>
-            <div class="footer2"></div>
-            <div class="footer3"></div>
-        </div>
+        <footer id="footer">
+            <div class="container">
+                <div class="footer1"></div>
+                <div class="footer2">
+                    <div class="footer2-1"></div>
+                    <div class="footer2-2"></div>
+                </div>
+            </div>
+        </footer>
         <!-- //footer -->
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(function () {
-            $(".nav > ul > li").mouseover(function () {
-                $(this).find(".submenu").stop().slideDown(600);
+            $(".nav>ul>li>a").mouseover(function () {
+                $(".nav>ul>li>ul").stop().fadeIn(600);
+                $("#header").addClass("on");
             })
-            $(".nav > ul > li").mouseout(function () {
-                $(this).find(".submenu").stop().slideUp(400);
+            $(".nav>ul>li>a").mouseout(function () {
+                $(".nav>ul>li>ul").stop().fadeOut(600);
+                $("#header").removeClass("on");
             })
         })
     </script>

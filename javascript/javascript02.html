@@ -1319,23 +1319,21 @@
         }
         // 22. 서버 데이터 불러오기 : XMLHttpRequest
         {
-            {
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", "https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json", true);
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json", true);
 
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        var responseData = xhr.responseText;
-                        var jsonData = JSON.parse(responseData);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var responseData = xhr.responseText;
+                    var jsonData = JSON.parse(responseData);
 
-                        console.log(jsonData);
-                    } else if (xhr.readyState === 4) {
-                        console.error("데이터 불러오기 오류: " + xhr.status);
-                    }
-                };
+                    console.log(jsonData);
+                } else if (xhr.readyState === 4) {
+                    console.error("데이터 불러오기 오류: " + xhr.status);
+                }
+            };
 
-                xhr.send();
-            }
+            xhr.send();
         }
         // 23. 서버 데이터 불러오기 : fetch API
         {
