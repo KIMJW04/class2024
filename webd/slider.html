@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        #wrap {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        #header {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            background-color: #c2c2c226;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        #header::after {
+            content: '';
+            position: absolute;
+            /* z-index: 10; */
+            width: 1200px;
+            height: 0px;
+            background-color: #dcdcdc;
+            top: 100px;
+            transition: all 0.3s;
+        }
+
+        #header.on::after {
+            height: 160px;
+        }
+
+        #header .logo {
+            width: 200px;
+            height: 100px;
+            background-color: #ddd;
+        }
+
+        #section {
+            width: 1200px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: #ccc;
+        }
+
+        #main {
+            width: 1200px;
+            height: 200px;
+            display: flex;
+            margin: 0 auto;
+        }
+
+        #main .gonggi {
+            width: 400px;
+            height: 200px;
+            background-color: #c2c2c2;
+        }
+
+        #main .gallely {
+            width: 400px;
+            height: 200px;
+            background-color: #c9c9c9;
+        }
+
+        #main .banner {
+            width: 400px;
+            height: 200px;
+            background-color: #ddd;
+        }
+
+        #footer {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            background-color: #dddddd28;
+            justify-content: center;
+        }
+
+        #footer .footer1 {
+            width: 1000px;
+            height: 100px;
+        }
+
+        #footer .footer1 .undermenu {
+            width: 100%;
+            height: 50%;
+            background-color: #ccc;
+        }
+
+        #footer .footer1 .copyright {
+            width: 100%;
+            height: 50%;
+            background-color: #d9d9d9;
+        }
+
+        #footer .familysite {
+            width: 200px;
+            height: 100px;
+            background-color: #d2d2d2;
+        }
+
+        /* sliderWrap */
+        #section .sliderWrap {
+            position: relative;
+        }
+
+        #section .sliderWrap .slider {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* display: none; */
+        }
+
+        /* #section .sliderWrap .slider:nth-child(1) {
+            display: block;
+        } */
+
+        #section .sliderWrap .slider>span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px 20px;
+            color: #fff;
+        }
+
+        /* #section .menu */
+        #header .menu {
+            width: 1000px;
+            height: 100px;
+            background: #d2d2d2;
+        }
+
+        #header .menu>ul {
+            position: relative;
+            z-index: 1000;
+            display: flex;
+            justify-content: right;
+            margin-top: 60px;
+            width: fit-content;
+            margin-left: auto;
+        }
+
+        #header .menu>ul>li {
+            list-style: none;
+        }
+
+        #header .menu>ul>li>a {
+            text-decoration: none;
+            color: #000;
+            padding: 10px 50px;
+            background-color: #dcdcdc;
+            display: inline-block;
+        }
+
+        #header .menu>ul>li>a:hover {
+            background-color: #ccc;
+        }
+
+        #header .menu>ul>li>ul {
+            text-align: center;
+            display: block;
+            height: 0;
+            overflow: hidden;
+            transition: all 600ms;
+        }
+
+        #header .menu>ul>li>ul>li>a {
+            color: #000;
+            padding: 10px;
+            width: 100%;
+            display: inline-block;
+            background-color: #dcdcdc;
+            box-sizing: border-box;
+        }
+
+        #header .menu>ul>li>ul>li>a:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="logo"></div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">대학소개</a>
+                        <ul>
+                            <li><a href="#">총장인사말</a></li>
+                            <li><a href="#">학교소개</a></li>
+                            <li><a href="#">홍보관</a></li>
+                            <li><a href="#">캠퍼스안내</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">입학안내</a>
+                        <ul>
+                            <li><a href="#">수시모집</a></li>
+                            <li><a href="#">정시모집</a></li>
+                            <li><a href="#">편입학</a></li>
+                            <li><a href="#">재외국민</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">정보서비스</a>
+                        <ul>
+                            <li><a href="#">대학정보알림</a></li>
+                            <li><a href="#">정보공개</a></li>
+                            <li><a href="#">정보서비스안내</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">커뮤니티</a>
+                        <ul>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">참여게시판</a></li>
+                            <li><a href="#">자료실</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- //haeder -->
+
+        <section id="section">
+            <div class="sliderWrap">
+                <div class="slider s1"><img src="https://webstoryboy.github.io/webstoryboy/w_webd/slider/slider01.jpg"
+                        alt="">
+                    <span>이미지1</span>
+                </div>
+                <div class="slider s2"><img src="https://webstoryboy.github.io/webstoryboy/w_webd/slider/slider02.jpg"
+                        alt="">
+                    <span>이미지2</span>
+                </div>
+                <div class="slider s3"><img src="https://webstoryboy.github.io/webstoryboy/w_webd/slider/slider03.jpg"
+                        alt="">
+                    <span>이미지3</span>
+                </div>
+            </div>
+        </section>
+        <!-- //section -->
+
+        <main id="main">
+            <div class="gonggi"></div>
+            <div class="gallely"></div>
+            <div class="banner"></div>
+        </main>
+        <!-- //main -->
+
+        <footer id="footer">
+            <div class="footer1">
+                <div class="undermenu"></div>
+                <div class="copyright"></div>
+            </div>
+            <div class="familysite"></div>
+        </footer>
+        <!-- //footer -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // jQuery
+        // $(function () {
+        //     let currentIndex = 0; // 현재 이미지
+
+        //     setInterval(() => {
+        //         // console.log(currentIndex++ % 3);
+
+        //         let nextIndex = (currentIndex + 1) % 3;
+
+        //         $(".slider").eq(currentIndex).fadeOut(3000);
+        //         $(".slider").eq(nextIndex).fadeIn(3000);
+
+        //         currentIndex = nextIndex;
+        //         // $(".slider").eq(currentIndex++ % 3).fadeOut(3000);
+        //         // $(".slider").eq((currentIndex % 3)).fadeIn(3000);
+        //     }, 3000);
+        // });
+        // $(function () {
+        //     $(".menu > ul > li").mouseover(function () {
+        //         $(".menu>ul>li>ul").stop().fadeIn(400);
+        //         $("#header").addClass("on");
+        //     });
+        //     $(".menu > ul > li").mouseout(function () {
+        //         $(".menu>ul>li>ul").stop().fadeOut(100);
+        //         $("#header").removeClass("on");
+        //     });
+        // })
+    </script>
+    <script>
+        // JavaScript
+        window.onload = function () {
+            let currentIndex = 0;
+            const slider = document.querySelectorAll(".slider");        // 모든 이미지 변수 저장
+            const menu = document.querySelector(".menu >ul");
+
+            slider.forEach(img => img.style.opacity = "0");             // 모든 이미지를 투명하게
+            slider[0].style.opacity = "1";                              // 첫번째 이미지만 보이게
+
+            setInterval(() => {
+                let nextIndex = (currentIndex + 1) % slider.length;     // 0 1 2 0 1 2 ....
+
+                slider[currentIndex].style.opacity = "0";       // 전 이미지
+                slider[nextIndex].style.opacity = "1";          // 다음 이미지
+                slider.forEach(img => img.style.transition = "all 1s");
+
+                currentIndex = nextIndex
+            }, 3000);
+
+            menu.addEventListener("mouseover", () => {
+                menu.querySelectorAll(".menu>ul>li>ul").forEach((sub) => {
+                    sub.style.height = "158px";
+                })
+                document.getElementById("header").classList.add("on");
+            })
+            menu.addEventListener("mouseout", () => {
+                menu.querySelectorAll(".menu>ul>li>ul").forEach((sub) => {
+                    sub.style.height = "0px";
+                })
+                document.getElementById("header").classList.remove("on");
+            })
+        }
+    </script>
+</body>
+
+</html>

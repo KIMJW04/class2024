@@ -461,6 +461,8 @@
         const startBtn = quizStart.querySelector(".start__btn");
         const quizPlay = quizWrap.querySelector(".quiz__play");
         const quizEnd = quizWrap.querySelector(".quiz__finish");
+        const quiz_start = quizWrap.querySelector(".quiz__start");
+        const quiz_start_Date = quizWrap.querySelector(".title");
 
         // 문제 정보
         let quizinfo = [];
@@ -487,7 +489,7 @@
             // 공백 제거 후 대소문자를 모두 소문자로 변환하여 비교
             const formattedStr1 = str1.replace(/\s+/g, '').toLowerCase();
             const formattedStr2 = str2.replace(/\s+/g, '').toLowerCase();
-            
+
             // 두 문자열 비교
             return formattedStr1 === formattedStr2;
         };
@@ -541,7 +543,7 @@
             }
         };
 
-        
+
 
         // 결과 출력
         const quizend = () => {
@@ -553,8 +555,8 @@
                 <button class="next_page">다음 페이지</button>
             </div>
             `)
-            for(let i =0; i < 2; i++){
-                if (compareWithoutSpaces(resultAnswer[dubm].toLowerCase(),quizinfo[dubm].answer.toLowerCase())) {
+            for (let i = 0; i < 2; i++) {
+                if (compareWithoutSpaces(resultAnswer[dubm].toLowerCase(), quizinfo[dubm].answer.toLowerCase())) {
                     quizArray.push(`
                     <div class="quizsresult good">
                         <div class="quiz__main">
@@ -584,13 +586,13 @@
             next_page_Btn.addEventListener("click", () => {
                 quizArray = [];
                 quizend();
-                if(dubm >= quizinfo.length){
+                if (dubm >= quizinfo.length) {
                     alert("마지막 페이집입니다.");
                 }
             })
 
         }
-        
+
         // 문제 출력
         const updateQuiz = (index) => {
             let quizWrapTag = `

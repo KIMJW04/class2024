@@ -201,7 +201,7 @@ a {
 /* quiz__play */
 .quiz__play {
     width: 50vw;
-    min-height: 30vh;
+    min-height: 40vh;
     border: 10px solid #f8f8f8;
     background-color: #8a69ed;
     border-radius: 10px;
@@ -261,7 +261,13 @@ a {
 }
 
 .quiz__play .user__answer {
-    margin-top: 20px;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
 }
 
 .quiz__play .user__answer input {
@@ -271,9 +277,10 @@ a {
     border: 0;
     text-align: center;
     font-size: 35px;
+    position: absolute;
 }
 
-.quiz__play .answer{
+.quiz__play .answer {
     margin: 0 auto;
     margin-top: 20px;
     width: 100%;
@@ -286,13 +293,17 @@ a {
 }
 
 .quiz__play .play__btn {
-    margin-top: 20px;
     text-align: center;
     display: flex;
     align-content: center;
     align-items: center;
     flex-direction: column;
     justify-content: flex-end;
+    position: absolute;
+    content: '';
+    bottom: 30px;
+    width: 100%;
+    left: 0;
 }
 
 .quiz__play .play__btn .confirm:hover {
@@ -333,7 +344,7 @@ a {
     justify-content: center;
 }
 
-.quiz__finish .totalResults{
+.quiz__finish .totalResults {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -346,7 +357,8 @@ a {
     border-bottom: 4px solid #f8f8f8;
     padding: 20px;
 }
-.quiz__finish .finish__btn{
+
+.quiz__finish .finish__btn {
     position: absolute;
     border-top: 4px solid #f8f8f8;
     padding: 20px;
@@ -369,23 +381,24 @@ a {
     font-size: 20px;
 }
 
-.quiz__finish .totalResults h2{
+.quiz__finish .totalResults h2 {
     font-size: 30px;
     font-weight: normal;
 }
 
-.quiz__finish .quiz__main{
+.quiz__finish .quiz__main {
     padding: 20px 0 20px;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
 }
-.quiz__finish .quiz__main .question{
+
+.quiz__finish .quiz__main .question {
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-.quiz__finish .quiz__main .Re{
+.quiz__finish .quiz__main .Re {
     border: 1px solid #f8f8f8;
     padding: 10px;
     background-color: #f8f8f8;
@@ -397,7 +410,7 @@ a {
     margin-bottom: 10px;
 }
 
-.quiz__finish .quiz__main .answer{
+.quiz__finish .quiz__main .answer {
     border: 1px solid #f8f8f8;
     padding: 10px;
     background-color: #f8f8f8;
@@ -408,7 +421,8 @@ a {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.quiz__finish .quiz__main .answer::before{
+
+.quiz__finish .quiz__main .answer::before {
     content: '😊정답: ';
 }
 
@@ -514,20 +528,20 @@ a {
         height: 100%;
     }
 
-    .quiz__play{
+    .quiz__play {
         width: 100%;
         height: 100%;
     }
-    
-    .quiz__play .question{
+
+    .quiz__play .question {
         margin-top: 50px;
     }
 
-    .quiz__play::before{
+    .quiz__play::before {
         display: none;
     }
 
-    .quiz__play::after{
+    .quiz__play::after {
         display: none;
     }
 
@@ -535,11 +549,11 @@ a {
         display: none;
     }
 
-    .quiz__play .number{
+    .quiz__play .number {
         top: -10px;
     }
 
-    .quiz__finish{
+    .quiz__finish {
         width: 100%;
         height: 100%;
     }
