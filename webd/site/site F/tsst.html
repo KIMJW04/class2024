@@ -145,11 +145,11 @@
     <script>
         // jQuery
         $(function () {
-            $(".nav > ul > li").mouseover(function () {
-                $(this).find("ul").stop().fadeIn(600);
+            $(".nav>ul>li").mouseenter(function () {
+                $(this).find("ul").stop().fadeIn(400);
             })
-            $(".nav > ul > li").mouseout(function () {
-                $(this).find("ul").stop().fadeOut(600);
+            $(".nav>ul>li").mouseout(function () {
+                $(this).find("ul").stop().fadeOut(400);
             })
 
             let curnetIndex = 0;
@@ -164,14 +164,16 @@
             const tabBtn = $(".title > ul > li");
             const tabCont = $(".cont > div");
 
-            tabCont.hide().eq(0).fadeIn(0);
+            tabCont.hide().eq(0).show();
 
             tabBtn.click(function (e) {
                 e.preventDefault();
+
                 const index = $(this).index();
 
-                tabCont.hide().eq(index).fadeIn(0);
-                $(this).addClass("active").siblings().removeClass("active");
+                tabCont.hide().eq(index).show();
+
+                tabBtn.eq(index).addClass("active").siblings().removeClass("active");
             })
         })
     </script>

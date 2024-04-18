@@ -167,6 +167,17 @@ li {
     border-bottom: 1px dashed #c7c7c7;
 }
 
+.main__menu h2 {
+    font-family: var(--fontG);
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.main__menu ul {
+    margin-bottom: 30px;
+}
+
 .main__menu ul li a {
     color: #1d5f4b;
     line-height: 1.7;

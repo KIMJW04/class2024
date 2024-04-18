@@ -1,11 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mouse Effect</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+TC:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            cursor: none;
+        }
+
+        .main__inner {
+            font-family: "Bai Jamjuree", sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main__inner p {
+            color: #d2d2d2;
+            padding: 10vw;
+            font-size: 2.4vmax;
+            text-align: center;
+        }
+
+        .main__inner p em,
+        span,
+        i,
+        strong {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .main__info {
+            font-family: 'Montserrat';
+            color: #c2c2c2;
+            position: absolute;
+            left: 16px;
+            top: 68px;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .main__info ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .main__info ul li {
+            width: 25%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Montserrat';
+            color: #dbdbdb;
+            font-weight: 200;
+        }
+
+        .cursor {
+            width: 100px;
+            height: 100px;
+            background-color: #ffffff43;
+            border: 1px solid #ffffff20;
+            backdrop-filter: blur(5px);
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            border-radius: 50%;
+            z-index: 10000;
+            user-select: none;
+            pointer-events: none;
+            transition: transform 1s, background-color 0.3s, border 0.3s;
+        }
+
+        .cursor::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor::after {
+            content: '';
+            width: 1px;
+            height: 20px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        /* span1 스타일 */
+        .cursor.span1 {
+            background-color: #ff0000a3;
+            border: 1px solid #ffffff20;
+        }
+
+        /* span2 스타일 */
+        .cursor.span2 {
+            background-color: #51af1ea3;
+            border: 1px solid #ffffff20;
+            border-radius: 0;
+            transform: rotate(45deg);
+        }
+
+        /* span3 스타일 */
+        .cursor.span3 {
+            background-color: #97af1ea3;
+            border: 1px solid #ffffff20;
+            border-radius: 0;
+            transform: rotate(-45deg);
+        }
+
+        /* span4 스타일 */
+        .cursor.span4 {
+            background-color: #a214b4a3;
+            border: 1px solid #ffffff20;
+            border-radius: 0;
+            transform: scale(1.2);
+        }
+
+        /* 호버 효과 */
+        .cursor:hover {
+            opacity: 0.7;
+        }
+
+        /* 클릭 효과 */
+        .cursor:active {
+            transform: scale(0.8);
+        }
+
+        /* 애니메이션 효과 */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .cursor.animated {
+            animation: pulse 1s infinite;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,23 +171,112 @@
         </header>
         <!-- //header -->
         <main id="main">
+            <div class="cursor"></div>
             <div class="main__inner">
-
+                <p>
+                    JavaScript is a versatile <span>programming</span> language that powers the dynamic behavior on most
+                    websites. It
+                    was originally developed by Netscape as a means to add interactive elements to browsers, and has
+                    since become a <span>fundamental</span> component of web development. <span>JavaScript</span>
+                    enables
+                    developers to implement
+                    complex features, from displaying timely content updates to <span>interactive</span> maps and
+                    animated 2D/3D
+                    graphics.
+                </p>
+            </div>
+            <div class="main__info">
+                <ul>
+                    <li>clientX <span class="clientX">0</span></li>
+                    <li>offsetX <span class="offsetX">0</span></li>
+                    <li>pageX <span class="pageX">0</span></li>
+                    <li>screenX <span class="screenX">0</span></li>
+                </ul>
             </div>
         </main>
         <!-- //main -->
         <footer id="footer">
             <div class="footer__inner">
                 <ul>
-                    <li><a href="#">01</a></li>
-                    <li><a href="#">02</a></li>
-                    <li><a href="#">03</a></li>
-                    <li><a href="#">04</a></li>
+                    <li class="active"><a href="mouse01.html">01</a></li>
+                    <li><a href="mouse02.html">02</a></li>
+                    <li><a href="mouse03.html">03</a></li>
+                    <li><a href="mouse04.html">04</a></li>
                 </ul>
             </div>
         </footer>
         <!-- //footer -->
     </div>
+    <script>
+        // info
+        window.addEventListener("mousemove", function (event) {
+            // console.log(event);
+            document.querySelector(".clientX").innerText = event.clientX;
+            document.querySelector(".offsetX").innerText = event.offsetX;
+            document.querySelector(".pageX").innerText = event.pageX;
+            document.querySelector(".screenX").innerText = event.screenX;
+        });
+
+        // mouse
+
+        const cursor = document.querySelector(".cursor");
+
+        window.addEventListener("mousemove", function (e) {
+            cursor.style.left = e.clientX - 50 + "px";
+            cursor.style.top = e.clientY - 50 + "px";
+        });
+
+        // document.querySelector(".main__inner p span:nth-child(1)").addEventListener("mouseover", function () {
+        //     console.log("1");
+        //     cursor.classList.add("span1");
+        // });
+        // document.querySelector(".main__inner p span:nth-child(1)").addEventListener("mouseout", function () {
+        //     cursor.classList.remove("span1");
+        // });
+
+        // document.querySelector(".main__inner p span:nth-child(2)").addEventListener("mouseover", function () {
+        //     cursor.classList.add("span2");
+        // });
+        // document.querySelector(".main__inner p span:nth-child(2)").addEventListener("mouseout", function () {
+        //     cursor.classList.remove("span2");
+        // });
+
+        // document.querySelector(".main__inner p span:nth-child(3)").addEventListener("mouseover", function () {
+        //     cursor.classList.add("span3");
+        // });
+        // document.querySelector(".main__inner p span:nth-child(3)").addEventListener("mouseout", function () {
+        //     cursor.classList.remove("span3");
+        // });
+
+        // document.querySelector(".main__inner p span:nth-child(2)").addEventListener("mouseover", function () {
+        //     cursor.classList.add("span4");
+        // });
+        // document.querySelector(".main__inner p span:nth-child(2)").addEventListener("mouseout", function () {
+        //     cursor.classList.remove("span4");
+        // });
+
+        // for문
+        // for (let i = 1; i < 5; i++) {
+        //     document.querySelector(".main__inner p span:nth-child(" + i + ")").addEventListener("mouseover", function () {
+        //         cursor.classList.add("span" + i);
+        //     });
+        //     document.querySelector(".main__inner p span:nth-child(" + i + ")").addEventListener("mouseout", function () {
+        //         cursor.classList.remove("span" + i);
+        //     });
+        // }
+
+        // forEach()
+        const span = document.querySelectorAll(".main__inner p span");
+
+        span.forEach((span, i) => {
+            span.addEventListener("mouseover", function () {
+                cursor.classList.add("span" + (i + 1));
+            });
+            span.addEventListener("mouseout", function () {
+                cursor.classList.remove("span" + (i + 1));
+            });
+        })
+    </script>
 </body>
 
 </html>
