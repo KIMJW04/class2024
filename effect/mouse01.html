@@ -110,10 +110,21 @@
 
         /* span2 스타일 */
         .cursor.span2 {
-            background-color: #2ab7ca;
+            width: 80px;
+            height: 80px;
+            background-color: #919191;
             border: 1px solid #ffffff20;
             border-radius: 0% 50% 50% 0%;
             transform: rotate(45deg);
+        }
+
+        .cursor.span2::after {
+            background-color: #74c6e1;
+            width: 120px;
+            height: 120px;
+            left: 100px;
+            top: 50%;
+            border-radius: 50%;
         }
 
         /* span3 스타일 */
@@ -124,11 +135,46 @@
             transform: rotate(-45deg);
         }
 
+        .cursor.span3::after {
+            position: absolute;
+            height: 48px;
+            width: 25px;
+            top: -14px;
+            left: 30px;
+            border-radius: 0 0 30% 0;
+            background-color: #a9a9a9f8;
+        }
+
+        .cursor.span3::before {
+            position: absolute;
+            height: 48px;
+            width: 25px;
+            top: -14px;
+            left: 70px;
+            border-radius: 0 0 0 30%;
+            background-color: #a9a9a9f8;
+        }
+
+
         /* span4 스타일 */
         .cursor.span4 {
             background-color: #97af1e;
             border: 1px solid #ffffff43;
             border-radius: 0% 50% 0% 50%;
+        }
+
+        .cursor.span4::before {
+            width: 140px;
+            rotate: 45deg;
+            top: 98px;
+            left: 27px;
+        }
+
+        .cursor.span4::after {
+            height: 100px;
+            rotate: 45deg;
+            top: 37px;
+            left: 15px;
         }
 
         /* 호버 효과 */
