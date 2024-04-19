@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>남도맛기행 축제</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    #warp {
+        width: 1000px;
+        height: 650px;
+        margin-left: 0;
+        margin-top: 0;
+        display: flex;
+    }
+
+    #header {
+        width: 20%;
+        height: 100%;
+        background-color: #ddd;
+        z-index: 10000;
+        position: relative;
+    }
+
+    #header .logo {
+        width: 100%;
+        height: 20%;
+        background-color: #7ee32c;
+        font-size: 14px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #header .logo h1 {
+        content: '';
+    }
+
+    #header .menu__wrap {
+        width: 100%;
+        height: 80%;
+        background-color: #a6d215;
+        position: relative;
+
+    }
+
+    .menu__wrap>ul {
+        padding-top: 10px;
+        /* position: absolute; */
+    }
+
+    .menu__wrap>ul>li {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .menu__wrap>ul>li>a {
+        padding: 10px 50px;
+        /* position: absolute; */
+        background-color: #e1e40c;
+        display: inline-block;
+    }
+
+    .menu__wrap>ul>li>a:hover {
+        background-color: #cccf0c;
+    }
+
+    .menu__wrap>ul>li>ul {
+        display: none;
+        position: absolute;
+        text-align: center;
+        left: 200px;
+        top: -10px;
+        width: 100%;
+        box-sizing: border-box;
+        height: 250px;
+        background-color: #d4d710;
+    }
+
+    .menu__wrap>ul>li>ul>li {}
+
+    .menu__wrap>ul>li>ul>li>a {
+        width: 100%;
+        padding: 8px 20px;
+        box-sizing: border-box;
+        display: inline-block;
+        background-color: #d4d710;
+    }
+
+    .menu__wrap>ul>li>ul>li>a:hover {
+        background-color: #cdd01d;
+    }
+
+    #ss-wrap {
+        width: 80%;
+        height: 100%;
+    }
+
+    #slide {
+        width: 800px;
+        height: 350px;
+        background-color: #eee;
+        /* overflow: hidden; */
+        position: relative;
+    }
+
+    #slide .slide__wrap {
+        display: flex;
+        position: absolute;
+    }
+
+    #slide .slide__wrap .slider {
+        text-align: center;
+    }
+
+    #slide .slide__wrap .slider:nth-child(1) {
+        background-image: url("assets/img/slider1.jpg");
+        width: 800px;
+        height: 350px;
+    }
+
+    #slide .slide__wrap .slider:nth-child(2) {
+        background-image: url("assets/img/slider2.jpg");
+        width: 800px;
+        height: 350px;
+    }
+
+    #slide .slide__wrap .slider:nth-child(3) {
+        background-image: url("assets/img/slider3.jpg");
+        width: 800px;
+        height: 350px;
+    }
+
+    #slide .slide__wrap .slider span {
+        /* position: absolute; */
+        display: inline-block;
+        margin-top: 140px;
+        color: #fff;
+        background-color: #333;
+        padding: 8px 30px;
+        font-size: 14px;
+        box-sizing: border-box;
+        width: 180px;
+    }
+
+    #main {
+        width: 100%;
+        height: 200px;
+        background-color: #ccc;
+        display: flex;
+    }
+
+    #main .gonggi {
+        width: 33.333%;
+        height: 100%;
+        background-color: #94ff3c;
+        /* position: relative; */
+    }
+
+    #main .gonggi .title {
+        width: 100%;
+    }
+
+    #main .gonggi .title ul {
+        display: flex;
+    }
+
+    #main .gonggi .title ul li {
+        margin-right: 10px;
+    }
+
+
+    #main .gonggi .content {}
+
+    #main .gallery {
+        width: 33.333%;
+        height: 100%;
+        background-color: #8bf634;
+    }
+
+    #main .banner {
+        width: 33.333%;
+        height: 100%;
+        background-color: #7eea26;
+    }
+
+    #footer {
+        width: 100%;
+        height: 100px;
+        background-color: #bbb;
+        display: flex;
+    }
+
+    #footer .underlogo {
+        width: 30%;
+        background-color: #68d50f;
+        height: 100%;
+    }
+
+    #footer .footer2 {
+        width: 70%;
+        height: 100%;
+    }
+
+    #footer .footer2 .undermenu {
+        width: 100%;
+        height: 50%;
+        background-color: #72de19;
+    }
+
+    #footer .footer2 .copyright {
+        width: 100%;
+        height: 50%;
+        background-color: #7eea26;
+    }
+
+    .active {
+        text-decoration: underline;
+        text-underline-position: under;
+    }
+</style>
+
+<body>
+    <div id="warp">
+        <header id="header">
+            <div class="logo">
+                <h1>남도맛기행 축제</h1>
+            </div>
+            <div class="menu__wrap">
+                <ul>
+                    <li><a href="#">협회소개</a>
+                        <ul>
+                            <li><a href="#">인사말</a></li>
+                            <li><a href="#">명인</a></li>
+                            <li><a href="#">오시는길</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">행사안내</a>
+                        <ul>
+                            <li><a href="#">요리경연대회</a></li>
+                            <li><a href="#">전시참가</a></li>
+                            <li><a href="#">참가신청</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">홍보마당</a>
+                        <ul>
+                            <li><a href="#">축제소식</a></li>
+                            <li><a href="#">보도자료</a></li>
+                            <li><a href="#">레시피</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">회원마당</a>
+                        <ul>
+                            <li><a href="#">Q&A</a></li>
+                            <li><a href="#">사진갤러리</a></li>
+                            <li><a href="#">공지사항</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- //header -->
+
+        <div id="ss-wrap">
+            <article id="slide">
+                <div class="slide__wrap">
+                    <div class="slider s1"><span>지역 음식을 즐기세요!</span></div>
+                    <div class="slider s2"><span>지역 음식을 즐기세요!</span></div>
+                    <div class="slider s3"><span>지역 음식을 즐기세요!</span></div>
+                </div>
+            </article>
+            <!-- //slide -->
+
+            <main id="main">
+                <div class="gonggi">
+                    <div class="title">
+                        <ul>
+                            <li class="active"><a href="#">공지사항</a></li>
+                            <li><a href="#">갤러리</a></li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <!-- <div class="gongtab"> -->
+                        <ul>
+                            <li><a href="#">송도 축제 오픈일</a><span>2024.04.01</span></li>
+                            <li><a href="#">포항 축제 오픈일</a><span>2024.04.02</span></li>
+                            <li><a href="#">신도림 축제 오픈일</a><span>2024.04.05</span></li>
+                            <li><a href="#">부산 축제 오픈일</a><span>2024.04.10</span></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#"><img src="assets/img/gallely01.jpg" alt="갤러리01"></a></li>
+                            <li><a href="#"><img src="assets/img/gallely02.jpg" alt="갤러리02"></a></li>
+                            <li><a href="#"><img src="assets/img/gallely03.jpg" alt="갤러리03"></a></li>
+                        </ul>
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="gallery"></div>
+                <div class="banner"></div>
+            </main>
+            <!-- //main -->
+
+            <footer id="footer">
+                <div class="underlogo"></div>
+                <div class="footer2">
+                    <div class="undermenu"></div>
+                    <div class="copyright"></div>
+                </div>
+            </footer>
+            <!-- //footer -->
+        </div>
+    </div>
+</body>
+
+</html>
