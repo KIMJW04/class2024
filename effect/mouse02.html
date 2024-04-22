@@ -5,13 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mouse Effect</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mouse.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Black+Ops+One&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Jersey+25&family=Noto+Sans+TC:wght@100..900&family=Orbitron:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     <style>
+        .cursor::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor::after {
+            content: '';
+            width: 1px;
+            height: 20px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         .main__inner {
             font-family: "Orbitron", sans-serif;
             display: flex;
@@ -27,6 +47,8 @@
             display: flex;
             margin-left: -10vw;
             letter-spacing: -1vw;
+            transition: color 0.3s;
+            /* 텍스트 색상 전환 효과를 추가합니다. */
         }
 
         .main__info {
@@ -69,26 +91,33 @@
             transition: transform 1s, background-color 0.3s, border 0.3s;
         }
 
-        .cursor::before {
+        .cursor::before,
+        .cursor::after {
             content: '';
+            position: absolute;
+            background-color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .cursor::before {
             width: 20px;
             height: 1px;
-            background-color: #fff;
-            position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);
         }
 
         .cursor::after {
-            content: '';
             width: 1px;
             height: 20px;
-            background-color: #fff;
-            position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);
+        }
+
+        .char {
+            display: inline-block;
+            transition: color 0.3s;
+            color: #fff;
+            /* 글자 색상 전환 효과를 추가합니다. */
         }
     </style>
 </head>
@@ -104,8 +133,18 @@
         <main id="main">
             <div class="cursor"></div>
             <div class="main__inner">
-                <p>
-                    JavaScript
+                <!-- p 태그 내 각 글자에 고유한 클래스를 부여합니다. -->
+                <p id="jsText">
+                    <span class="char char1">J</span>
+                    <span class="char char2">a</span>
+                    <span class="char char3">v</span>
+                    <span class="char char4">a</span>
+                    <span class="char char5">S</span>
+                    <span class="char char6">c</span>
+                    <span class="char char7">r</span>
+                    <span class="char char8">i</span>
+                    <span class="char char9">p</span>
+                    <span class="char char10">t</span>
                 </p>
             </div>
             <div class="main__info">
@@ -120,12 +159,19 @@
         <!-- //main -->
         <footer id="footer">
             <div class="footer__inner">
-                <ul>
-                    <li><a href="mouse01.html">01</a></li>
-                    <li class="active"><a href="mouse02.html">02</a></li>
-                    <li><a href="mouse03.html">03</a></li>
-                    <li><a href="mouse04.html">04</a></li>
-                </ul>
+                <nav>
+                    <ul>
+                        <li><a href="mouse01.html">01</a></li>
+                        <li class="active"><a href="mouse02.html">02</a></li>
+                        <li><a href="mouse03.html">03</a></li>
+                        <li><a href="mouse04.html">04</a></li>
+                    </ul>
+                </nav>
+                <div class="link">
+                    <ul>
+                        <li><a href="parallax01.html">Parallax</a></li>
+                    </ul>
+                </div>
             </div>
         </footer>
         <!-- //footer -->
@@ -143,6 +189,29 @@
 
         document.addEventListener("mousemove", (event) => {
             gsap.to((".cursor"), { duration: 0.6, left: event.clientX - 50, top: event.clientY - 50 });
+        });
+
+        // 커서 요소 선택합니다.
+        const cursor = document.querySelector(".cursor");
+
+        // 각 글자 요소를 선택합니다.
+        const chars = document.querySelectorAll('.char');
+
+        // 각 글자에 대해 서로 다른 색상을 부여합니다.
+        const colors = ['#ff6347', '#00bfff', '#32cd32', '#9370db', '#ffa500', '#8a2be2', '#20b2aa', '#f08080', '#7fff00', '#4682b4'];
+
+        // 각 글자에 대해 마우스 호버 이벤트를 추가합니다.
+        chars.forEach((char, index) => {
+            // 마우스 호버 시 색상 변경 애니메이션을 적용합니다.
+            char.addEventListener('mouseenter', () => {
+                gsap.to(char, { duration: 0.3, color: colors[index % colors.length] }); // 호버 시 다른 색상으로 변경
+                gsap.to(cursor, { duration: 0.3, backgroundColor: colors[index % colors.length] }); // 호버 시 다른 색상으로 변경
+            });
+
+            char.addEventListener('mouseleave', () => {
+                gsap.to(char, { duration: 0.3, color: '#ffffff' }); // 마우스가 떠날 때 흰색으로 변경
+                gsap.to(cursor, { duration: 0.3, backgroundColor: '#ffffff' }); // 마우스가 떠날 때 흰색으로 변경
+            });
         });
     </script>
 
