@@ -39,13 +39,14 @@
             justify-content: center;
         }
 
-        .main__inner p {
+        #jsText {
             color: #d2d2d2;
-            font-size: 30vmax;
+            font-size: 24vmax;
             font-weight: 600;
+            align-items: center;
             text-align: center;
             display: flex;
-            margin-left: -10vw;
+            margin-left: -12vw;
             letter-spacing: -1vw;
             transition: color 0.3s;
             /* 텍스트 색상 전환 효과를 추가합니다. */
@@ -116,7 +117,7 @@
         .char {
             display: inline-block;
             transition: color 0.3s;
-            color: #fff;
+            color: #d2d2d2;
             /* 글자 색상 전환 효과를 추가합니다. */
         }
     </style>
@@ -209,8 +210,8 @@
             });
 
             char.addEventListener('mouseleave', () => {
-                gsap.to(char, { duration: 0.3, color: '#ffffff' }); // 마우스가 떠날 때 흰색으로 변경
-                gsap.to(cursor, { duration: 0.3, backgroundColor: '#ffffff' }); // 마우스가 떠날 때 흰색으로 변경
+                gsap.to(char, { duration: 0.3, color: '#d2d2d2' }); // 마우스가 떠날 때 흰색으로 변경
+                gsap.to(cursor, { duration: 0.3, backgroundColor: '#d2d2d2' }); // 마우스가 떠날 때 흰색으로 변경
             });
         });
     </script>
