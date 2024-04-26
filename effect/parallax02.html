@@ -365,19 +365,21 @@
         const ani9 = gsap.timeline();
 
         ani9.from("#section09 .img", {
-            opacity: 0,
+            autoAlpha: 0,
             y: 100,
             scale: 0.2,
             rotate: 180,
             stagger: 0.2,
-            ease: "elastic.out(1, 0.5)" // 탄성 효과의 이징 사용
-        });
+            ease: "elastic.out(1, 0.5)", // 탄성 효과의 이징 사용
+        }, "a").to("#section09", {
+            backgroundColor: "#B5EAD7"
+        }, "a");
 
         ScrollTrigger.create({
             animation: ani9,
             trigger: "#section09",
             start: "top top", // 트리거가 활성화되는 스크롤 위치
-            end: "+=1000", // 트리거가 비활성화되는 스크롤 위치
+            end: "+=2000", // 트리거가 비활성화되는 스크롤 위치
             scrub: true, // 애니메이션과 스크롤 속도 조절
             anticipatePin: 1, // 스크롤 트리거 활성화 전 스크롤의 미리보기
             markers: true, // ScrollTrigger 마커 표시 (디버깅 용도)
