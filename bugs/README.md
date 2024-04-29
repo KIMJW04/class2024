@@ -14,4 +14,5 @@ vscode 확장프로그램 python 설치하기
     pip3 install lxml
     pip3 install pandas
     pip3 install selenium
+    pip3 install webdriver_manager
 ````
