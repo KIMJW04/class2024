@@ -81,43 +81,451 @@
         </div>
         <!--main__menu-->
         <div class="main__sample container">
-            <!-- 01. 변수 : 데이터 저장 -->
+            <!-- 01. at() -->
             <div id="sample01" class="sample">
                 <h3>01. at()</h3>
-                <p class="notice">"문자열".at(위치값)</p>
+                <p class="notice">배열.at(위치값)</p>
                 <ul>
-                    <li>지정한 숫자(index)를 받아, 문자열에서 해당되는 인덱스의 요소를 반환합니다.</li>
-                    <li>대소문자를 구별합니다.</li>
-                    <li>문자열의 길이보다 큰 인덱스를 지정하면 undefined를 반환합니다</li>
-                    <li>음수인 경우 문자열의 오른쪽에서부터 인덱스를 셉니다.</li>
+                    <li>지정한 숫자(index)를 받아, 배열에서 해당되는 인덱스의 요소를 반환합니다.</li>
                 </ul>
                 <pre class="javascript"><code>{
-        "javascript reference".at()       //j
-        "javascript reference".at(0)      //j
-        "javascript reference".at(1)      //a
-        "javascript reference".at(2)      //v
-        "javascript reference".at(3)      //a
-        "javascript reference".at(4)      //s
-        "javascript reference".at(5)      //c
-        "javascript reference".at(-1)     //e
-        "javascript reference".at(-2)     //c
-        "javascript reference".at(-3)     //n
-        "javascript reference".at(-4)     //e
-        "javascript reference".at(-5)     //r
-        "javascript reference".at(100)    // undefined
+    ["a", "b", "c"].at(0)    // "a"
+    ["a", "b", "c"].at(2)    // "c"
 }</code></pre>
-                <div class="result">
-                    <details>
-                        <summary>결과확인하기</summary>
-                        <div>
-                            100<br>
-                            200<br>
-                            javascript
-                        </div>
-                    </details>
-                </div>
             </div>
             <!-- //sample01 -->
+
+            <!-- 02. concat() -->
+            <div id="sample02" class="sample">
+                <h3>02. concat()</h3>
+                <p class="notice">배열.concat(다른 배열)</p>
+                <ul>
+                    <li>둘 이상의 배열을 결합하여, 새로운 배열을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    ["a", "b"].concat(["c", "d"])    // ["a", "b", "c", "d"]
+}</code></pre>
+            </div>
+            <!-- //sample02 -->
+
+            <!-- 03. copyWithin() -->
+            <div id="sample03" class="sample">
+                <h3>03. copyWithin()</h3>
+                <p class="notice">배열.copyWithin(대상 인덱스, 복사 시작 인덱스[, 복사 끝 인덱스])</p>
+                <ul>
+                    <li>배열의 일부를 얕게 복사한 뒤, 동일한 배열의 다른 위치에 덮어쓰고 그 배열을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    ["a", "b", "c", "d", "e"].copyWithin(0, 3)    // ["d", "e", "c", "d", "e"]
+}</code></pre>
+            </div>
+            <!-- //sample03 -->
+
+            <!-- 04. entries() -->
+            <div id="sample04" class="sample">
+                <h3>04. entries()</h3>
+                <p class="notice">배열.entries()</p>
+                <ul>
+                    <li>배열의 각 인덱스에 대한 [인덱스, 요소값] 쌍을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [...["a", "b", "c"].entries()]    // [[0, "a"], [1, "b"], [2, "c"]]
+}</code></pre>
+            </div>
+            <!-- //sample04 -->
+
+            <!-- 05. keys() -->
+            <div id="sample05" class="sample">
+                <h3>05. keys()</h3>
+                <p class="notice">배열.keys()</p>
+                <ul>
+                    <li>배열의 각 인덱스에 대한 키 값을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [...["a", "b", "c"].keys()]    // [0, 1, 2]
+}</code></pre>
+            </div>
+            <!-- //sample05 -->
+
+            <!-- 06. fill() -->
+            <div id="sample06" class="sample">
+                <h3>06. fill()</h3>
+                <p class="notice">배열.fill(값[, 시작 인덱스[, 끝 인덱스]])</p>
+                <ul>
+                    <li>배열의 시작 인덱스부터 끝 인덱스까지 하나의 값으로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    ["a", "b", "c"].fill("x", 1, 2)    // ["a", "x", "c"]
+}</code></pre>
+            </div>
+            <!-- //sample06 -->
+
+            <!-- 07. find() -->
+            <div id="sample07" class="sample">
+                <h3>07. find()💛💛</h3>
+                <p class="notice">배열.find(판별 함수)</p>
+                <ul>
+                    <li>주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [5, 12, 8, 130, 44].find(x => x > 10)    // 12
+}</code></pre>
+            </div>
+            <!-- //sample07 -->
+
+            <!-- 08. findIndex() -->
+            <div id="sample08" class="sample">
+                <h3>08. findIndex()</h3>
+                <p class="notice">배열.findIndex(판별 함수)</p>
+                <ul>
+                    <li>주어진 판별 함수를 만족하는 첫 번째 요소의 값을 인덱스로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [5, 12, 8, 130, 44].findIndex(x => x > 10)    // 1
+}</code></pre>
+            </div>
+            <!-- //sample08 -->
+
+            <!-- 09. findLast() -->
+            <div id="sample09" class="sample">
+                <h3>09. findLast()</h3>
+                <p class="notice">배열.findLast(판별 함수)</p>
+                <ul>
+                    <li>주어진 판별 함수를 만족하는 첫 번째 요소의 값을 역순으로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [5, 12, 8, 130, 44].findLast(x => x > 10)    // 130
+}</code></pre>
+            </div>
+            <!-- //sample09 -->
+
+            <!-- 10. findLastIndex() -->
+            <div id="sample10" class="sample">
+                <h3>10. findLastIndex()</h3>
+                <p class="notice">배열.findLastIndex(판별 함수)</p>
+                <ul>
+                    <li>주어진 판별 함수를 만족하는 첫 번째 요소의 값을 역순 인덱스로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [5, 12, 8, 130, 44].findLastIndex(x => x > 10)    // 3
+}</code></pre>
+            </div>
+            <!-- //sample10 -->
+
+            <!-- 11. flat() -->
+            <div id="sample11" class="sample">
+                <h3>11. flat()</h3>
+                <p class="notice">배열.flat([깊이])</p>
+                <ul>
+                    <li>중첩된 배열을 하나의 배열로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, [3, 4]].flat()    // [1, 2, 3, 4]
+}</code></pre>
+            </div>
+            <!-- //sample11 -->
+
+            <!-- 12. flatMap() -->
+            <div id="sample12" class="sample">
+                <h3>12. flatMap()</h3>
+                <p class="notice">배열.flatMap(매핑 함수)</p>
+                <ul>
+                    <li>먼저 매핑 함수를 사용해 각 엘리먼트에 대해 map 수행 후, 결과를 새로운 배열로 평탄화합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3].flatMap(x => [x * 2])    // [2, 4, 6]
+}</code></pre>
+            </div>
+            <!-- //sample12 -->
+
+            <!-- 13. forEach() -->
+            <div id="sample13" class="sample">
+                <h3>13. forEach()💛💛💛</h3>
+                <p class="notice">배열.forEach(함수)</p>
+                <ul>
+                    <li>주어진 함수 조건을 배열 요소 각각에 대해 실행하고, 그 결과를 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3].forEach(x => console.log(x))    // 1, 2, 3
+}</code></pre>
+            </div>
+            <!-- //sample13 -->
+
+            <!-- 14. filter() -->
+            <div id="sample14" class="sample">
+                <h3>14. filter()</h3>
+                <p class="notice">배열.filter(함수)</p>
+                <ul>
+                    <li>주어진 함수 조건에 맞는 모든 요소를 새로운 배열로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3, 4].filter(x => x % 2 === 0)    // [2, 4]
+}</code></pre>
+            </div>
+            <!-- //sample14 -->
+
+            <!-- 15. every() -->
+            <div id="sample15" class="sample">
+                <h3>15. every()</h3>
+                <p class="notice">배열.every(함수)</p>
+                <ul>
+                    <li>주어진 함수를 모두 통과하는지 확인하고, 불린(true, false)로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [2, 4, 6].every(x => x % 2 === 0)    // true
+}</code></pre>
+            </div>
+            <!-- //sample15 -->
+
+            <!-- 16. map() -->
+            <div id="sample16" class="sample">
+                <h3>16. map()💛💛💛</h3>
+                <p class="notice">배열.map(함수)</p>
+                <ul>
+                    <li>주어진 함수를 호출하고, 그 결과를 모아서 만든 새로운 배열을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3].map(x => x * 2)    // [2, 4, 6]
+}</code></pre>
+            </div>
+            <!-- //sample16 -->
+
+            <!-- 17. some() -->
+            <div id="sample17" class="sample">
+                <h3>17. some()</h3>
+                <p class="notice">배열.some(함수)</p>
+                <ul>
+                    <li>주어진 판별 함수를 통과하는지 테스트하여, 그 결과를 불린(true, false)로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3, 4].some(x => x % 2 === 0)    // true
+}</code></pre>
+            </div>
+            <!-- //sample17 -->
+
+            <!-- 18. includes() -->
+            <div id="sample18" class="sample">
+                <h3>18. includes()💛</h3>
+                <p class="notice">배열.includes(값[, 시작 인덱스])</p>
+                <ul>
+                    <li>배열 포함 여부를 검색하여, 불린(true, false)을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3].includes(2)    // true
+}</code></pre>
+            </div>
+            <!-- //sample18 -->
+
+            <!-- 19. indexOf() -->
+            <div id="sample19" class="sample">
+                <h3>19. indexOf()💛</h3>
+                <p class="notice">배열.indexOf(값[, 시작 인덱스])</p>
+                <ul>
+                    <li>배열을 검색하고, 위치값(숫자)을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3].indexOf(2)    // 1
+}</code></pre>
+            </div>
+            <!-- //sample19 -->
+
+            <!-- 20. lastIndexOf() -->
+            <div id="sample20" class="sample">
+                <h3>20. lastIndexOf()</h3>
+                <p class="notice">배열.lastIndexOf(값[, 시작 인덱스])</p>
+                <ul>
+                    <li>역순으로 배열을 검색하고, 위치값(숫자)을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3, 1].lastIndexOf(1)    // 3
+}</code></pre>
+            </div>
+            <!-- //sample20 -->
+
+            <!-- 21. join() -->
+            <div id="sample21" class="sample">
+                <h3>21. join()💛</h3>
+                <p class="notice">배열.join([구분자])</p>
+                <ul>
+                    <li>배열의 요소를 추가하여, 하나의 문자열로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    ["a", "b", "c"].join("-")    // "a-b-c"
+}</code></pre>
+            </div>
+            <!-- //sample21 -->
+
+            <!-- 22. pop() -->
+            <div id="sample22" class="sample">
+                <h3>22. pop()</h3>
+                <p class="notice">배열.pop()</p>
+                <ul>
+                    <li>배열 마지막 요소를 제거하고, 제거한 요소를 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    ["a", "b", "c"].pop()    // "c"
+}</code></pre>
+            </div>
+            <!-- //sample22 -->
+
+            <!-- 23. push() -->
+            <div id="sample23" class="sample">
+                <h3>23. push()💛💛</h3>
+                <p class="notice">배열.push(요소)</p>
+                <ul>
+                    <li>배열 끝에 요소를 추가하고, 배열의 새로운 길이값을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    ["a", "b"].push("c")    // 3
+}</code></pre>
+            </div>
+            <!-- //sample23 -->
+
+            <!-- 24. reduce() -->
+            <div id="sample24" class="sample">
+                <h3>24. reduce()</h3>
+                <p class="notice">배열.reduce(함수[, 초기값])</p>
+                <ul>
+                    <li>배열의 각 요소를 실행하고, 하나의 결과값을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3, 4].reduce((acc, val) => acc + val, 0)    // 10
+}</code></pre>
+            </div>
+            <!-- //sample24 -->
+
+            <!-- 25. reduceRight() -->
+            <div id="sample25" class="sample">
+                <h3>25. reduceRight()</h3>
+                <p class="notice">배열.reduceRight(함수[, 초기값])</p>
+                <ul>
+                    <li>배열의 각 요소를 마지막부터 실행하고, 하나의 결과값을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3, 4].reduceRight((acc, val) => acc - val, 0)    // -2
+}</code></pre>
+            </div>
+            <!-- //sample25 -->
+
+            <!-- 26. reverse() -->
+            <div id="sample26" class="sample">
+                <h3>26. reverse()</h3>
+                <p class="notice">배열.reverse()</p>
+                <ul>
+                    <li>배열 요소의 순서를 반대로 하고, 반대로 된 배열을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3].reverse()    // [3, 2, 1]
+}</code></pre>
+            </div>
+            <!-- //sample26 -->
+
+            <!-- 27. shift() -->
+            <div id="sample27" class="sample">
+                <h3>27. shift()</h3>
+                <p class="notice">배열.shift()</p>
+                <ul>
+                    <li>배열 처음 요소를 제거하고, 제거한 요소를 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    ["a", "b", "c"].shift()    // "a"
+}</code></pre>
+            </div>
+            <!-- //sample27 -->
+
+            <!-- 28. unshift() -->
+            <div id="sample28" class="sample">
+                <h3>28. unshift()</h3>
+                <p class="notice">배열.unshift(요소)</p>
+                <ul>
+                    <li>배열 앞에 요소를 추가하고, 배열의 새로운 길이 값을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    ["a", "b"].unshift("c")    // 3
+}</code></pre>
+            </div>
+            <!-- //sample28 -->
+
+            <!-- 29. slice() -->
+            <div id="sample29" class="sample">
+                <h3>29. slice()💛</h3>
+                <p class="notice">배열.slice([시작 인덱스[, 종료 인덱스]])</p>
+                <ul>
+                    <li>배열 시작 위치에서 종료 위치 값을 추출하여, 새로운 배열을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    ["a", "b", "c", "d", "e"].slice(2, 4)    // ["c", "d"]
+}</code></pre>
+            </div>
+            <!-- //sample29 -->
+
+            <!-- 30. splice() -->
+            <div id="sample30" class="sample">
+                <h3>30. splice()💛</h3>
+                <p class="notice">배열.splice(시작 인덱스[, 삭제할 요소 개수[, 추가할 요소1, 추가할 요소2, ...]])</p>
+                <ul>
+                    <li>배열의 기존 요소를 삭제 또는 교체하거나 새 요소를 추가하여 배열의 내용을 변경합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    let arr = ["a", "b", "c", "d"];
+    arr.splice(2, 1, "x", "y")    // ["c"]
+    arr    // ["a", "b", "x", "y", "d"]
+}</code></pre>
+            </div>
+            <!-- //sample30 -->
+
+            <!-- 31. sort() -->
+            <div id="sample31" class="sample">
+                <h3>31. sort()💛</h3>
+                <p class="notice">배열.sort([비교 함수])</p>
+                <ul>
+                    <li>배열의 요소를 적절한 위치에 정렬한 후, 그 배열을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [4, 2, 5, 1, 3].sort((a, b) => a - b)    // [1, 2, 3, 4, 5]
+}</code></pre>
+            </div>
+            <!-- //sample31 -->
+
+            <!-- 32. toLocaleString() -->
+            <div id="sample32" class="sample">
+                <h3>32. toLocaleString()</h3>
+                <p class="notice">배열.toLocaleString()</p>
+                <ul>
+                    <li>배열의 요소를 문자열로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3].toLocaleString()    // "1,2,3"
+}</code></pre>
+            </div>
+            <!-- //sample32 -->
+
+            <!-- 33. toString() -->
+            <div id="sample33" class="sample">
+                <h3>33. toString()</h3>
+                <p class="notice">배열.toString()</p>
+                <ul>
+                    <li>데이터를 배열로 변환하고, 새로운 배열을 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [1, 2, 3].toString()    // "1,2,3"
+}</code></pre>
+            </div>
+            <!-- //sample33 -->
+
+            <!-- 34. values() -->
+            <div id="sample34" class="sample">
+                <h3>34. values()</h3>
+                <p class="notice">배열.values()</p>
+                <ul>
+                    <li>배열 각 인덱스에 대한 값을 객체로 반환합니다.</li>
+                </ul>
+                <pre class="javascript"><code>{
+    [...[1, 2, 3].values()]    // [1, 2, 3]
+}</code></pre>
+            </div>
+            <!-- //sample34 -->
+
         </div>
         <!--main__sample-->
     </main>
