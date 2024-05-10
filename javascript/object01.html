@@ -608,10 +608,39 @@
 
         </footer>
         <!--footer-->
+        <button id="scrollBtn" title="Go to top">↑</button>
         <script>
         </script>
         <script src="assets/js/highlight.min.js"></script>
         <script>hljs.highlightAll();</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script>
+                // Scroll to top button animation
+                const scrollBtn = document.getElementById("scrollBtn");
+
+                // Function to scroll to top smoothly
+                function scrollToTop() {
+                        window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                        });
+                }
+
+                // Show/hide scroll to top button based on scroll position
+                function toggleScrollBtn() {
+                        if (window.scrollY > 20) {
+                                gsap.to(scrollBtn, { duration: 0.3, opacity: 1, display: "block" });
+                        } else {
+                                gsap.to(scrollBtn, { duration: 0.3, opacity: 0, display: "none" });
+                        }
+                }
+
+                // Scroll event listener
+                window.addEventListener("scroll", toggleScrollBtn);
+
+                // Click event listener for scroll to top button
+                scrollBtn.addEventListener("click", scrollToTop);
+        </script>
 </body>
 
 </html>

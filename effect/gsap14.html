@@ -408,6 +408,20 @@
                 id: "img7"
             }
         })
+        const ani8 = gsap.timeline();
+
+        ani8.to("#section8 .parallax__item__img", { opactity: 1, scale: 0, borderRadius: 200 })
+            .to("#section8 .parallax__item__img", { opactity: 0, scale: 1, borderRadius: 200 });
+
+        ScrollTrigger.create({
+            animation: ani8,
+            trigger: "#section8",
+            start: "top top",
+            end: "+=3000",
+            scrub: true,
+            pin: true,
+            anticipatePin: 1,
+        });
     </script>
 </body>
 
