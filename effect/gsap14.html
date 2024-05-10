@@ -288,8 +288,8 @@
     <script>
         const ani1 = gsap.timeline();
 
-        ani1.to("#section1 .parallax__item__img", { rotation: 720, scale: 0, borderRadius: 200 })
-            .to("#section1 .parallax__item__img", { rotation: 0, scale: 1, borderRadius: 200 });
+        ani1.to("#section1 .parallax__item__imgWrap", { rotation: 720, scale: 0, borderRadius: 200 })
+            .to("#section1 .parallax__item__imgWrap", { rotation: 0, scale: 1, borderRadius: 200 });
 
         ScrollTrigger.create({
             animation: ani1,
@@ -303,7 +303,7 @@
 
         const ani2 = gsap.timeline();
 
-        ani2.from("#section2 .parallax__item__img", {
+        ani2.from("#section2 .parallax__item__imgWrap", {
             autoAlpha: 0,
             scale: 5,
             width: "100vw",
@@ -322,7 +322,7 @@
 
         const ani3 = gsap.timeline();
 
-        ani3.from("#section3 .parallax__item__img", {
+        ani3.from("#section3 .parallax__item__imgWrap", {
             duration: 2,
             x: 500,
             rotation: 360,
@@ -331,9 +331,10 @@
 
         ScrollTrigger.create({
             animation: ani3,
+            // markers: true,
             trigger: "#section3",
-            start: "top top",
-            end: "left left",
+            start: "-10% 70%",
+            end: "30% 40%",
             scrub: true,
             anticipatePin: 1,
         });
@@ -404,14 +405,14 @@
                 start: "left center",
                 containerAnimation: scrollTween,
                 toggleActions: "play none reverse none",
-                markers: true,
+                // markers: true,
                 id: "img7"
             }
         })
         const ani8 = gsap.timeline();
 
-        ani8.to("#section8 .parallax__item__img", { opactity: 1, scale: 0, borderRadius: 200 })
-            .to("#section8 .parallax__item__img", { opactity: 0, scale: 1, borderRadius: 200 });
+        ani8.to("#section8 .parallax__item__imgWrap", { opactity: 1, scale: 0, borderRadius: 200 })
+            .to("#section8 .parallax__item__imgWrap", { opactity: 0, scale: 1, borderRadius: 200 });
 
         ScrollTrigger.create({
             animation: ani8,
@@ -420,6 +421,21 @@
             end: "+=3000",
             scrub: true,
             pin: true,
+            anticipatePin: 1,
+        });
+        const ani9 = gsap.timeline();
+
+        ani8.to("#section9 .parallax__item__imgWrap", { rotation: 350, scale: 0, borderRadius: 0 })
+            .to("#section9 .parallax__item__imgWrap", { rotation: 0, scale: 1, borderRadius: 100 });
+
+        ScrollTrigger.create({
+            animation: ani8,
+            trigger: "#section9",
+            start: "top top",
+            end: "90%",
+            scrub: true,
+            pin: true,
+            markers: true,
             anticipatePin: 1,
         });
     </script>
