@@ -8,12 +8,81 @@
 
     <link rel="stylesheet" href="asssets/css/style.css">
     <style>
-        .member {
+        /* main__icons */
+        .main__icons {
+            background-color: #e0d6d653;
+            width: 80%;
+            overflow-x: auto;
             position: absolute;
-            left: 10px;
-            bottom: 10px;
+            left: 50%;
+            top: -90px;
+            transform: translate(-50%);
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            border-radius: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            height: 100px;
+            transition: all 0.9s;
+        }
+
+        .main__icons::-webkit-scrollbar {
+            display: none;
+        }
+
+        .icon {
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 10px;
+            cursor: pointer;
             text-align: center;
-            width: 100%;
+        }
+
+
+        .icon img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        .icon span {
+            font-family: var(--fontN);
+            /* font-family: "nanumSquareNeo"; */
+            margin-top: 8px;
+            color: #fff;
+            font-size: 13px;
+            display: block;
+        }
+
+        .icon a {
+            text-decoration: none;
+        }
+
+        .main__icons:hover {
+            top: 5px;
+            transition: all 0.9s;
+        }
+
+        .member {
+            background-color: #e0d6d653;
+            width: 85%;
+            overflow-x: auto;
+            position: absolute;
+            left: 50%;
+            bottom: -90px;
+            transform: translate(-50%);
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            border-radius: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            height: 100px;
+            transition: all 0.9s;
         }
 
         .member ul {
@@ -26,19 +95,31 @@
             margin-bottom: 10px;
             margin-right: 5px;
             list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 10px;
+            cursor: pointer;
+            text-align: center;
         }
 
         .member img {
-            width: 40px;
-            height: 40px;
             border-radius: 50%;
             display: block;
+            width: 50px;
+            height: 50px;
         }
 
         .member a {
             color: #fff;
             text-decoration: none;
             font-size: 12px;
+        }
+
+        .member:hover {
+            bottom: 5px;
+            transition: all 0.9s;
         }
     </style>
 </head>
@@ -259,6 +340,19 @@
                 layer.style.display = "none"; // 레이어를 숨김
             }
         });
+
+        const iconBoxes = document.querySelector('.main__icons');
+
+        iconBoxes.forEach(iconBox => {
+            iconBox.addEventListener('mousemove', () => {
+                iconBox.style.transform = 'translateY(-5px)';
+            });
+
+            iconBox.addEventListener('mouseleave', () => {
+                iconBox.style.transform = 'translateY(0)';
+            });
+        });
+
     </script>
 </body>
 

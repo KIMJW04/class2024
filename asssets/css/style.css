@@ -116,49 +116,10 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     overflow: hidden;
+    position: relative;
 }
 
-/* main__icons */
-.main__icons {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    justify-content: center;
 
-    .icon {
-        width: 75px;
-        height: 75px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        margin: 10px;
-        cursor: pointer;
-        text-align: center;
-
-
-
-        img {
-            width: 50px;
-            border-radius: 50%;
-        }
-
-        span {
-            font-family: var(--fontN);
-            /* font-family: "nanumSquareNeo"; */
-            margin-top: 8px;
-            color: #fff;
-            font-size: 13px;
-            display: block;
-        }
-
-        a {
-            text-decoration: none;
-        }
-    }
-}
 
 /* layer__wrap */
 
