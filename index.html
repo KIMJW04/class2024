@@ -131,6 +131,11 @@
 </head>
 
 <body>
+    <video id="videobcg" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+        <source src="/asssets/img/GARGANTUA_1080_10Mbps.mp4" type="video/mp4">
+        <source src="movie.webm" type="video/webm">
+             Sorry, your browser does not support HTML5 video.
+   </video>
     <div class="main__icons">
         <div id="myComputerIcon" class="draggableIcon icon">
             <img src="asssets/img/face.png" alt="내 컴퓨터">
@@ -350,16 +355,15 @@
 
         const iconBoxes = document.querySelector('.main__icons');
 
-        iconBoxes.forEach(iconBox => {
-            iconBox.addEventListener('mousemove', () => {
-                iconBox.style.transform = 'translateY(-5px)';
-            });
+        // iconBoxes.forEach(iconBox => {
+        //     iconBox.addEventListener('mousemove', () => {
+        //         iconBox.style.transform = 'translateY(-5px)';
+        //     });
 
-            iconBox.addEventListener('mouseleave', () => {
-                iconBox.style.transform = 'translateY(0)';
-            });
-        });
-
+        //     iconBox.addEventListener('mouseleave', () => {
+        //         iconBox.style.transform = 'translateY(0)';
+        //     });
+        // });
     </script>
 </body>
 
