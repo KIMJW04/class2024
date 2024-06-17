@@ -22,39 +22,25 @@
             event.preventDefault(); // 페이지 새로고침 방지
 
             var url = $('#urlInput').val();
-            console.log(url);
-            var corsAnywhereUrl = 'https://api.allorigins.win/get?url='; // CORS Anywhere 서버 URL
 
+            console.log(url);
+            var corsAnywhereUrl = 'http://miento.iptime.org:8801/get?url=';
             var allOriginsUrl = corsAnywhereUrl + encodeURI(url);
             console.log(allOriginsUrl);
+
             $.ajax({
                 url: allOriginsUrl,
                 success: function (response) {
-                    var html = response.contents;
-                    var parser = new DOMParser();
-                    var doc = parser.parseFromString(html, 'text/html');
-
-                    var ogTitle = doc.querySelector('meta[property="og:title"]');
-                    var ogImage = doc.querySelector('meta[property="og:image"]');
-                    var ogDescription = doc.querySelector('meta[property="og:description"]');
-
-                    if (ogTitle && ogImage && ogDescription) {
-                        var title = ogTitle.getAttribute('content');
-                        var image = ogImage.getAttribute('content');
-                        var description = ogDescription.getAttribute('content');
-
+                    console.log(response);
+                    if (response.title && response.description && response.image_url) {
                         $('#metaTags').html(`
-                            <p>og:title: ${title}</p>
-                            <p>og:image: ${image}</p>
-                            <p>og:description: ${description}</p>
-                        `);
+                                <p>og:title: ${response.title}</p>
+                                <p>og:image: ${response.image_url}</p>
+                                <p>og:description: ${response.description}</p>
+                            `);
                     } else {
-                        console.log(html);
                         $('#metaTags').html('<p>No meta tags found.</p>');
                     }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    $('#metaTags').html('<p>Error: ' + textStatus + '</p><p>' + errorThrown + '</p>');
                 }
             });
         });
