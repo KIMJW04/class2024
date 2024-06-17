@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title> <!-- 문서의 제목 -->
+    <title>Document</title>
 </head>
 
 <body>
-    <!-- 네비게이션 바, 각 링크는 Urban Eclipse, About, Contact, Work로 이동 -->
     <nav>
         <a href="#">Urban Eclipse</a>
         <a href="#">About</a>
@@ -17,40 +16,40 @@
         <a href="#">Work</a>
     </nav>
 
-    <div class="container"> <!-- 콘텐츠를 담고 있는 컨테이너 -->
+    <div class="container">
         <section id="section-1">
             <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, porro!</h1> <!-- 첫 번째 섹션 제목 -->
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque provident non tempora explicabo? Iure rem
-                repellendus cumque, totam fuga ipsa.</p> <!-- 첫 번째 섹션 내용 -->
+                repellendus cumque, totam fuga ipsa.</p>
         </section>
 
         <section id="section-2">
-            <h2>Section 2</h2> <!-- 두 번째 섹션 제목 -->
-            <div class="img"><img src="./assets/img-1.jpg" alt=""></div> <!-- 이미지 1 -->
-            <div class="img"><img src="./assets/img-2.jpg" alt=""></div> <!-- 이미지 2 -->
-            <div class="img"><img src="./assets/img-3.jpg" alt=""></div> <!-- 이미지 3 -->
+            <h2>Section 2</h2>
+            <div class="img"><img src="./assets/img-1.jpg" alt=""></div>
+            <div class="img"><img src="./assets/img-2.jpg" alt=""></div>
+            <div class="img"><img src="./assets/img-3.jpg" alt=""></div>
         </section>
 
         <section id="section-3">
-            <div class="img"><img src="./assets/img-4.jpg" alt=""></div> <!-- 이미지 4 -->
-            <div class="img"><img src="./assets/img-5.jpg" alt=""></div> <!-- 이미지 5 -->
-            <div class="img"><img src="./assets/img-6.jpg" alt=""></div> <!-- 이미지 6 -->
+            <div class="img"><img src="./assets/img-4.jpg" alt=""></div>
+            <div class="img"><img src="./assets/img-5.jpg" alt=""></div>
+            <div class="img"><img src="./assets/img-6.jpg" alt=""></div>
         </section>
 
         <section id="section-4">
             <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, quas.</h1> <!-- 네 번째 섹션 제목 -->
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci quibusdam dolorum enim obcaecati sed
-                ab eius delectus nulla pariatur doloribus.</p> <!-- 네 번째 섹션 내용 -->
+                ab eius delectus nulla pariatur doloribus.</p>
         </section>
 
         <section id="section-5">
-            <div class="img"><img src="./assets/img-7.jpg" alt=""></div> <!-- 이미지 7 -->
-            <div class="img"><img src="./assets/img-8.jpg" alt=""></div> <!-- 이미지 8 -->
-            <div class="img"><img src="./assets/img-9.jpg" alt=""></div> <!-- 이미지 9 -->
+            <div class="img"><img src="./assets/img-7.jpg" alt=""></div>
+            <div class="img"><img src="./assets/img-8.jpg" alt=""></div>
+            <div class="img"><img src="./assets/img-9.jpg" alt=""></div>
         </section>
     </div>
 
-    <div class="timeline"> <!-- 타임라인을 담고 있는 div -->
+    <div class="timeline">
         <div class="scroller"> <!-- 드래그 가능한 요소 -->
             <p>[<span>Drag</span>]</p> <!-- 드래그 안내 텍스트 -->
         </div>
@@ -59,47 +58,7 @@
     <!-- GSAP 및 Draggable 플러그인 로드 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
-    <script>
-        gsap.registerPlugin(Draggable); // Draggable 플러그인 등록
-
-        window.onload = function () { // 페이지 로드 시 실행
-            const timeline = document.querySelector(".timeline"); // 타임라인 요소 선택
-            const scroller = document.querySelector(".scroller"); // 스크롤러 요소 선택
-            const container = document.querySelector(".container"); // 컨테이너 요소 선택
-            const timelineWidth = timeline.offsetWidth; // 타임라인의 너비
-            const scrollerWidth = scroller.offsetWidth; // 스크롤러의 너비
-            const gap = parseInt(window.getComputedStyle(document.body).fontSize); // 폰트 크기를 정수로 변환
-
-            const maxDragX = timelineWidth - scrollerWidth - 2 * gap; // 최대 드래그 가능 거리 계산
-
-            // 타임라인에 50개의 마커를 생성하여 추가
-            for (let i = 0; i < 50; i++) {
-                const marker = document.createElement("div");
-                marker.className = "marker"; // 마커에 클래스 추가 (스타일링 가능)
-                timeline.appendChild(marker);
-            }
-
-            // Draggable 객체 생성
-            Draggable.create(scroller, {
-                type: "x", // 드래그 타입을 x축으로 설정
-                bounds: {
-                    minX: gap, // 최소 드래그 위치
-                    maxX: timelineWidth - scrollerWidth - gap, // 최대 드래그 위치
-                },
-                onDrag: function () { // 드래그 시 실행될 함수
-                    let progress = (this.x - gap) / maxDragX; // 드래그 진행도 계산
-                    // 진행도에 따라 컨테이너의 x축 이동 거리 계산
-                    let containerX = -400 * (timelineWidth / 100) * progress;
-                    // GSAP을 사용하여 컨테이너 이동 애니메이션 실행
-                    gsap.to(container, {
-                        x: containerX,
-                        duration: 1, // 애니메이션 지속 시간
-                        ease: "power3.out", // 애니메이션 효과 설정
-                    });
-                },
-            });
-        }
-    </script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
